@@ -1,0 +1,16 @@
+patch:
+  schema_list:
+    - schema: luna_pinyin_simp
+  menu/page_size: 9
+  # Ctrl+` 是 VS Code 等应用的快捷键；方案选单会接管之后的所有按键。
+  switcher/hotkeys: []
+  # 不再保存/恢复全角、西文标点等开关：旧版本存下的全角会因切换入口已去掉而无法关闭。
+  switcher/save_options: []
+  # 去掉逗号/句号翻页（拼音后打句号应直接上屏「。」），
+  # 去掉 Ctrl+Shift+数字切换全角、繁体等隐藏开关。
+  key_binder/bindings:
+    __patch:
+      - key_bindings:/emacs_editing
+      - key_bindings:/paging_with_minus_equal
+  # Echo 自己处理单按 Shift；切换时由 Rime 上屏已输入的字母（commit_code）。
+  ascii_composer/switch_key/Shift_L: commit_code

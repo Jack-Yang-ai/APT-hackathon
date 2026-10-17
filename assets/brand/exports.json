@@ -1,0 +1,11 @@
+{
+  "sha256": {
+    "logo-source.png": "4dbd49fc4f905f4386383f58b88bfc4de1b8282c02b9e8f06ecd2d10b969c8de",
+    "agent-source.png": "489d55e882bf934786509b5a2006d5d4f7ea45df0591191ad283b29f83033446",
+    "logo.png": "4ae048bbcdcf51aaeb9e940d6681fbf00b2089eea29b1e75d6a922e54a9321be",
+    "agent.png": "5f432cc4458856570e0ad71080b0212084f64feb4e763ec341a442f967ccd1f8",
+    "app-icon.png": "35765cf5a98ef48a0b679c7d2cdffbc1272ced45f2688f15f0ca9b87850458f3"
+  },
+  "appIcon": "opaque RGB 1024px; platform applies its mask",
+  "menuIcon": "black alpha template, 18pt at 1x/2x"
+}

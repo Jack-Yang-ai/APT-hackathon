@@ -1,0 +1,19 @@
+APT
+Copyright 2026 APT contributors.
+
+First-party code in this distribution is licensed under Apache License 2.0,
+unless a file carries a separate license or attribution notice.
+
+Third-party libraries, dictionaries, model weights and interface resources
+retain their original licenses and notices. These include Rime, OpenCC, Rime
+dictionaries and configurations, the English dictionary derived from rime-melt,
+VibeKeyElements, the ReDimNet speaker-embedding model (MIT, ID R&D), and the
+Silero VAD model (MIT, Silero Team). See mac/ime/EchoMemoryIME/*LICENSE.txt,
+Vendor notices and THIRD_PARTY_NOTICES.md.
+
+The bundled ONNX weights are converted upstream models used for generic
+inference. They are not anyone's voiceprint templates. See
+THIRD_PARTY_NOTICES.md for their published SHA-256 values and upstream links.
+
+This distribution contains no private recordings, input-history databases,
+voiceprint templates or source Git history.

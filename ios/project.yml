@@ -1,0 +1,242 @@
+name: GrowthApp
+
+options:
+  bundleIdPrefix: com.growth
+  deploymentTarget:
+    iOS: "26.0"
+  createIntermediateGroups: true
+  # 锁文件的真身是 ios/Package.resolved(进版本库);.xcodeproj 每次重生成,
+  # 所以生成后把锁塞回去,SPM 才会按锁 resolve 而不是自己挑最新的 7.x。
+  # cp 失败(锁文件丢了)时整条命令非 0,xcodegen 一并失败——不静默降级成「没锁」。
+  postGenCommand: set -e; mkdir -p GrowthApp.xcodeproj/project.xcworkspace/xcshareddata/swiftpm; cp Package.resolved GrowthApp.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
+  groupOrdering:
+    - order: [GrowthApp]
+
+# 手机与手表从同一出处取版本,避免安装包新旧混搭。
+settings:
+  base:
+    MARKETING_VERSION: "0.2.5"
+    CURRENT_PROJECT_VERSION: "2026101701"
+
+packages:
+  GRDB:
+    url: https://github.com/groue/GRDB.swift
+    from: "7.11.1"
+  # 端侧模型运行时。**两个消费方共用一个**:
+  #   · Silero VAD(1.2 MB,上传前裁非人声,实测省近四成转写费)
+  #   · ReDimNet 声纹本体。**S** 的那份已在包里(`redimnet_s_body_op17.onnx`,12.4 MB)。
+  #     ⚠️ ~~「M 的 18.8 MB 那份 2026-08-17 已导完」~~ **2026-08-18 复核:那句现在是假的。**
+  #     导出脚本(`docs/evidence/p4b-u6b-u5b/export_redimnet.py`)把产物写进了一个
+  #     **会话临时目录**,而那个目录早已被清理 —— 盘上现在一个 M 的 .onnx 都没有。
+  #     要用 M 得重跑导出(脚本还在,约半小时,需带 torch 的重依赖 venv)。
+  #     这是「前提没了而结论留着」的又一例:导出这件事做过是真的,产物还在是假的。
+  # 只为其中一个引进它不划算,两个就划算了。
+  onnxruntime:
+    url: https://github.com/microsoft/onnxruntime-swift-package-manager
+    from: "1.20.0"
+
+# 只为跑 U-检索1 那条规模实测而存在的 scheme。
+#
+# 为什么单开一个,而不是「临时把 skippedTests 那行删掉、跑完再加回来」:
+# 那个流程 2026-08-18 当场咬了一次 —— 删了忘了加回来,`project.yml` 就带着
+# 改动躺在工作区里等下一个 `git add`。而**跑一次规模实测是个正常操作,
+# 不该要求人先改构建配置**。
+#
+#   xcodebuild test -scheme GrowthAppScale -destination 'id=<真机 UDID>' …
+#
+# ⚠️ 指标是「**手机上** <100ms」,模拟器的数系统性偏乐观,只能当预览。
+schemes:
+  # 导航走查台。**日常不跑**,因为它要一份灌好的真库(CI 上没有)。
+  #
+  #   scripts/uitest.sh --db <一份 ≥2 场的 growth.sqlite>
+  #
+  # 🔴 库必须 ≥2 场。一场时「全库口径」与「本场口径」返回的键集恰好相同,
+  # 所有「该按场过滤而没过滤」的缺陷在台子上会整个消失 ——
+  # `ReassignSpeakerTests` 只插 1 个场次,所以它至今是绿的而那处口径是分家的。
+  # 下界由 `ScreenWalkTests.testFixtureHasAtLeastTwoSessions` 钉死,不靠人记得。
+  #
+  # 单开 scheme 而不是往 GrowthApp 的 testTargets 里加,理由与 GrowthAppScale 同一条:
+  # 跑一次走查是正常操作,**不该要求人先改构建配置**。
+  GrowthAppWalk:
+    build:
+      targets:
+        GrowthApp: [test]
+    test:
+      targets:
+        - name: GrowthAppUITests
+
+  GrowthAppScale:
+    build:
+      targets:
+        GrowthApp: [test]
+    test:
+      targets:
+        - name: GrowthAppTests
+          selectedTests: [SearchScaleTests]
+
+targets:
+  GrowthApp:
+    type: application
+    platform: iOS
+    sources:
+      - path: GrowthApp
+      # 根级共享组件显式列出，不收生成工程和构建目录。
+      - path: Theme.swift
+      - path: DesignSystem.swift
+      - path: RootView.swift
+      # 已改绑 Presentation/ 的展示模型(M0-1b,拍板 A);与旧仓报文契约再无关系
+      - path: TimelineComponents.swift
+    dependencies:
+      - package: GRDB
+        product: GRDB
+      - package: onnxruntime
+        product: onnxruntime
+      # 手表 App 随手机 App 一起装(W1)。
+      - target: GrowthWatch
+    scheme:
+      testTargets:
+        # 一台**仪器**,不是回归测试,日常不跑:
+        #   · SearchScaleTests —— U-检索1 的实测(造 22.5 万行,真机上要几分钟)
+        # ⚠️ **`-only-testing:` 盖不过这里的 `skippedTests`** —— 2026-08-18 实测:
+        # 点名它跑,得到的是 `** TEST SUCCEEDED **` + `Executed 0 tests`,
+        # 一条没跑而退出码为 0。**要跑它请换下面那个 GrowthAppScale scheme。**
+        # (这行注释在 08-18 之前写的正好是反的,照着做会得到一个假绿)
+        - name: GrowthAppTests
+          skippedTests: [SearchScaleTests]
+    info:
+      path: GrowthApp/Info.plist
+      properties:
+        CFBundleDisplayName: APT
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        # 手机只接收与处理。audio用于原话试听,processing用于转写/抽取后台续跑。
+        UIBackgroundModes:
+          - audio
+          - processing
+        # ⚠️ 这里的字符串必须与 `AppDelegate.processingTaskID` **完全一致**。
+        # 对不上不会崩、不会报错 —— `BGTaskScheduler.register` 返回 false,
+        # 后台从此永远不跑,而界面上和「后台跑了但没活干」一模一样。
+        # AppDelegate 里注册失败会往 processing_events 记一行,就是为了让它露头。
+        BGTaskSchedulerPermittedIdentifiers:
+          - com.growth.app.processing
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.growth.app
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        SWIFT_VERSION: "5.9"
+        TARGETED_DEVICE_FAMILY: "1"
+        GENERATE_INFOPLIST_FILE: NO
+        ENABLE_USER_SCRIPT_SANDBOXING: YES
+        SWIFT_TREAT_WARNINGS_AS_ERRORS: NO
+        # CI / 本地无签名构建。
+        # ⚠️ **「真机安装时由 Xcode 自动签名覆盖」只对 Xcode GUI 成立** ——
+        # 2026-08-17 实测:命令行 `xcodebuild` 装真机会失败在
+        # `ApplicationVerificationFailed / No code signature found`,而
+        # **build 本身报 SUCCEEDED**,包是未签的。光传 CODE_SIGNING_ALLOWED=YES
+        # 也不够,下面那个 `CODE_SIGN_IDENTITY: ""` 会赢。
+        # 要从命令行装真机,四个都得传:
+        #   xcodebuild … -allowProvisioningUpdates \
+        #     CODE_SIGNING_ALLOWED=YES CODE_SIGNING_REQUIRED=YES \
+        #     CODE_SIGN_STYLE=Automatic DEVELOPMENT_TEAM=YOUR_TEAM_ID \
+        #     CODE_SIGN_IDENTITY="Apple Development"
+        CODE_SIGNING_ALLOWED: NO
+        CODE_SIGNING_REQUIRED: NO
+        CODE_SIGN_IDENTITY: ""
+
+  # 手表录音(W1,`docs/intents/W1-手表录音/`)。
+  #
+  # 🔴 录音相关的纯逻辑与录音外壳**直接引用手机那几个文件**,不复制 ——
+  # 复制一份就是两个出处,改了手机忘了手表不会有任何东西报错(铁律 4)。
+  # 新增共用文件时两边都要列;手表编译过不了就是漏列了。
+  GrowthWatch:
+    type: application
+    platform: watchOS
+    # 11.0:共用的录音外壳用了 `.allowBluetooth`,watchOS 11 起才有。Ultra 各代都能升到 11。
+    deploymentTarget: "11.0"
+    sources:
+      - path: GrowthWatch
+      - path: GrowthApp/Recording/RecordingKernel.swift
+      - path: GrowthApp/Recording/RecordingStateMachine.swift
+      - path: GrowthApp/Recording/BlockCutPolicy.swift
+      - path: GrowthApp/Recording/BlockLedger.swift
+      - path: GrowthApp/Recording/EnergyGate.swift
+      - path: GrowthApp/Recording/AutoStopPolicy.swift
+      - path: GrowthApp/Recording/SessionSource.swift
+      - path: GrowthApp/Recording/RecordingPaths.swift
+      - path: GrowthApp/Recording/WatchLink.swift
+      - path: GrowthApp/Recording/WatchLiveTransfer.swift
+    info:
+      path: GrowthWatch/Info.plist
+      properties:
+        CFBundleDisplayName: APT
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        WKApplication: true
+        WKCompanionAppBundleIdentifier: com.growth.app
+        # 后台持续录音。watchOS 用的是 UIBackgroundModes,不是 WKBackgroundModes
+        # (后者只收 workout 等会话类型,写 audio 进去会被 App Store 拒)。
+        UIBackgroundModes:
+          - audio
+        NSMicrophoneUsageDescription: >-
+          APT 会在你开启后用手表持续录音，并把录好的音频同步到手机。
+          你随时可以暂停或结束。
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.growth.app.watchkitapp
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        SWIFT_VERSION: "5.9"
+        GENERATE_INFOPLIST_FILE: NO
+        CODE_SIGNING_ALLOWED: NO
+        CODE_SIGNING_REQUIRED: NO
+        CODE_SIGN_IDENTITY: ""
+
+  # 导航走查台的 target。只在 `GrowthAppWalk` scheme 里跑(见上面那段)。
+  GrowthAppUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: GrowthAppUITests
+    dependencies:
+      - target: GrowthApp
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        SWIFT_VERSION: "5.9"
+        TEST_TARGET_NAME: GrowthApp
+        CODE_SIGNING_ALLOWED: NO
+        CODE_SIGNING_REQUIRED: NO
+        CODE_SIGN_IDENTITY: ""
+
+  GrowthAppTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: GrowthAppTests
+      # Public distribution has no private seed resource.
+      # 同理:相对时间词表(`M2-检2` §1.2)也得进测试包。
+      # 忘了这一行的表现是 `RelativeDates.resolve` **恒返回 nil** ——
+      # 而那和「这句话里没有相对时间词」长得一模一样,不会有任何东西报错。
+      # `RelativeDatesTests.testTheLexiconIsActuallyInTheBundle` 就是那个哨兵。
+      - path: GrowthApp/Resources/relative_dates.json
+        buildPhase: resources
+      - path: GrowthApp/Resources/recency_cues.json
+        buildPhase: resources
+      # 🔴 跨语言夹具,**不是 iOS 的东西**:Swift 与 Python 两份去重实现对着同一个
+      # 文件断言(M2-检2 §1.4)。路径故意指出 ios/ 之外 —— 拷一份进来就是第二个出处,
+      # 而两份对不上时不会报错,正是铁律 4 的形状。
+      - path: ../shared/fixtures/recall/near_dup_vectors.json
+        buildPhase: resources
+      - path: ../shared/agent_protocol/examples.json
+        buildPhase: resources
+    dependencies:
+      - target: GrowthApp
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        SWIFT_VERSION: "5.9"
+        CODE_SIGNING_ALLOWED: NO
+        CODE_SIGNING_REQUIRED: NO
+        CODE_SIGN_IDENTITY: ""

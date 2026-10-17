@@ -1,0 +1,308 @@
+{
+  "synthetic": true,
+  "cases": [
+    {
+      "id": "service_accept",
+      "lines": [
+        {
+          "line_id": 10000,
+          "text": "要不要帮你倒点热茶？",
+          "cluster_tag": "service_accept-a",
+          "person_id": 7,
+          "is_gap": 0
+        },
+        {
+          "line_id": 10001,
+          "text": "好，谢谢",
+          "cluster_tag": "service_accept-b",
+          "person_id": 1,
+          "is_gap": 0
+        }
+      ],
+      "expected": []
+    },
+    {
+      "id": "information_unknown",
+      "lines": [
+        {
+          "line_id": 10010,
+          "text": "这台设备大概卖多少钱？",
+          "cluster_tag": "information_unknown-a",
+          "person_id": 1,
+          "is_gap": 0
+        },
+        {
+          "line_id": 10011,
+          "text": "不知道，我不负责这个产品",
+          "cluster_tag": "information_unknown-b",
+          "person_id": 7,
+          "is_gap": 0
+        }
+      ],
+      "expected": []
+    },
+    {
+      "id": "past_invitation",
+      "lines": [
+        {
+          "line_id": 10020,
+          "text": "上个月老师问我去不去他们那里训练，我当时嫌远就没去",
+          "cluster_tag": "past_invitation-a",
+          "person_id": 1,
+          "is_gap": 0
+        }
+      ],
+      "expected": []
+    },
+    {
+      "id": "explicit_commitment",
+      "lines": [
+        {
+          "line_id": 10030,
+          "text": "我周五之前把评审意见发给小钱",
+          "cluster_tag": "explicit_commitment-a",
+          "person_id": 1,
+          "is_gap": 0
+        }
+      ],
+      "expected": [
+        {
+          "line_id": 10030,
+          "kind": "accepted"
+        }
+      ]
+    },
+    {
+      "id": "conditional",
+      "lines": [
+        {
+          "line_id": 10040,
+          "text": "收到合同以后，我再核对金额，没有合同先不做",
+          "cluster_tag": "conditional-a",
+          "person_id": 1,
+          "is_gap": 0
+        }
+      ],
+      "expected": [
+        {
+          "line_id": 10040,
+          "kind": "accepted"
+        }
+      ]
+    },
+    {
+      "id": "accept_future_request",
+      "lines": [
+        {
+          "line_id": 10050,
+          "text": "你下周把方案给我？",
+          "cluster_tag": "accept_future_request-a",
+          "person_id": 7,
+          "is_gap": 0
+        },
+        {
+          "line_id": 10051,
+          "text": "行，我来发",
+          "cluster_tag": "accept_future_request-b",
+          "person_id": 1,
+          "is_gap": 0
+        }
+      ],
+      "expected": [
+        {
+          "line_id": 10051,
+          "kind": "accepted"
+        }
+      ]
+    },
+    {
+      "id": "unaccepted_request",
+      "lines": [
+        {
+          "line_id": 10060,
+          "text": "你明天来分享一次？",
+          "cluster_tag": "unaccepted_request-a",
+          "person_id": 7,
+          "is_gap": 0
+        },
+        {
+          "line_id": 10061,
+          "text": "我先看看时间，还没决定能不能接",
+          "cluster_tag": "unaccepted_request-b",
+          "person_id": 1,
+          "is_gap": 0
+        }
+      ],
+      "expected": [
+        {
+          "line_id": 10061,
+          "kind": "request"
+        }
+      ]
+    },
+    {
+      "id": "own_dependency",
+      "lines": [
+        {
+          "line_id": 10070,
+          "text": "我周五要上线，现在缺小钱的接口，我得找他对齐交付时间",
+          "cluster_tag": "own_dependency-a",
+          "person_id": 1,
+          "is_gap": 0
+        }
+      ],
+      "expected": [
+        {
+          "line_id": 10070,
+          "kind": "accepted"
+        }
+      ]
+    },
+    {
+      "id": "others_without_own_goal",
+      "lines": [
+        {
+          "line_id": 10080,
+          "text": "小钱说他下周给别人做一份报价",
+          "cluster_tag": "others_without_own_goal-a",
+          "person_id": 1,
+          "is_gap": 0
+        }
+      ],
+      "expected": []
+    },
+    {
+      "id": "completed_later",
+      "lines": [
+        {
+          "line_id": 10090,
+          "text": "我明天给你补充预算表",
+          "cluster_tag": "completed_later-a",
+          "person_id": 1,
+          "is_gap": 0
+        },
+        {
+          "line_id": 10091,
+          "text": "不用等明天了，预算表已经发过去了",
+          "cluster_tag": "completed_later-a",
+          "person_id": 1,
+          "is_gap": 0
+        }
+      ],
+      "expected": []
+    },
+    {
+      "id": "cancelled_later",
+      "lines": [
+        {
+          "line_id": 10100,
+          "text": "我准备下周报名培训",
+          "cluster_tag": "cancelled_later-a",
+          "person_id": 1,
+          "is_gap": 0
+        },
+        {
+          "line_id": 10101,
+          "text": "算了，培训不报了，这件事取消",
+          "cluster_tag": "cancelled_later-a",
+          "person_id": 1,
+          "is_gap": 0
+        }
+      ],
+      "expected": []
+    },
+    {
+      "id": "wish",
+      "lines": [
+        {
+          "line_id": 10110,
+          "text": "有空真想去学滑雪呀",
+          "cluster_tag": "wish-a",
+          "person_id": 1,
+          "is_gap": 0
+        }
+      ],
+      "expected": []
+    },
+    {
+      "id": "media",
+      "lines": [
+        {
+          "line_id": 10120,
+          "text": "新闻里说某公司承诺下周发布新版本",
+          "cluster_tag": "media-a",
+          "person_id": 1,
+          "is_gap": 0
+        }
+      ],
+      "expected": []
+    },
+    {
+      "id": "no_deadline",
+      "lines": [
+        {
+          "line_id": 10130,
+          "text": "我得预约复诊，这件事还没安排",
+          "cluster_tag": "no_deadline-a",
+          "person_id": 1,
+          "is_gap": 0
+        }
+      ],
+      "expected": [
+        {
+          "line_id": 10130,
+          "kind": "accepted"
+        }
+      ]
+    },
+    {
+      "id": "request_without_recipient",
+      "lines": [
+        {
+          "line_id": 10140,
+          "text": "请你明天整理方案",
+          "cluster_tag": "request_without_recipient-a",
+          "person_id": 1,
+          "is_gap": 0
+        }
+      ],
+      "expected": []
+    },
+    {
+      "id": "past_promise_still_open",
+      "lines": [
+        {
+          "line_id": 10150,
+          "text": "我昨天答应周五交资料，现在还没交，要抓紧整理",
+          "cluster_tag": "past_promise_still_open-a",
+          "person_id": 1,
+          "is_gap": 0
+        }
+      ],
+      "expected": [
+        {
+          "line_id": 10150,
+          "kind": "accepted"
+        }
+      ]
+    },
+    {
+      "id": "follow_up_suggestion",
+      "lines": [
+        {
+          "line_id": 10160,
+          "text": "我这周要完成提案，预算数字还在小钱那里，没有这个我没法定稿",
+          "cluster_tag": "follow_up_suggestion-a",
+          "person_id": 1,
+          "is_gap": 0
+        }
+      ],
+      "expected": [
+        {
+          "line_id": 10160,
+          "kind": "follow_up"
+        }
+      ]
+    }
+  ]
+}

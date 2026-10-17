@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "growth.extract_gold/1",
+  "title": "抽取质量臂的金标格式",
+  "description": "一场 = 一份金标。lines 是该场转写行的快照(打分要拿它验 quote 逐字与行号命中),gold 是人工标注的应抽内容。金标 15–20 场,其中 ≥5 场必须是全天非会议录音(技术方案 §2.2)。",
+  "type": "object",
+  "required": ["schema", "session_id", "lines", "gold"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": { "const": "growth.extract_gold/1" },
+    "session_id": { "type": "string" },
+    "annotated_by": { "type": "string", "description": "标注人,便于回溯口径差异" },
+    "annotated_at": { "type": "string", "description": "本地时区 ISO" },
+    "note": { "type": "string" },
+
+    "lines": {
+      "description": "该场转写行的快照。打分器不连库,验 quote 与行号全靠这一段。",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["line_id", "text", "is_gap"],
+        "additionalProperties": false,
+        "properties": {
+          "line_id": { "type": "integer" },
+          "text": { "type": "string" },
+          "is_gap": { "enum": [0, 1], "description": "1 = 缺块占位行,按 A6 不可被引用为证据" },
+          "person_id": {
+            "type": ["integer", "null"],
+            "description": "归属层派生值。null = 归属未定 → 引用该行的条目算「挂起」"
+          },
+          "cluster_tag": {
+            "type": ["string", "null"],
+            "description": "分人产出的簇标签。与系统输出的 speaker_hint 对不上 → 挂起复核(§4.2)"
+          }
+        }
+      }
+    },
+
+    "gold": {
+      "description": "人工标注的应抽内容。只标 line_id 与自由文本——匹配按 line_id 对齐,不做文本相似度(见打分器文件头)。",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "one_liner": { "type": "string", "description": "参考用,不进任何指标(无行号可对齐)" },
+        "key_points": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["line_id", "point"],
+            "additionalProperties": false,
+            "properties": {
+              "line_id": { "type": "integer" },
+              "point": { "type": "string" }
+            }
+          }
+        },
+        "commitments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["line_id", "what"],
+            "additionalProperties": false,
+            "properties": {
+              "line_id": { "type": "integer" },
+              "what": { "type": "string" },
+              "to_whom_text": {
+                "type": ["string", "null"],
+                "description": "文本线索,不是 person 外键(§4.2)"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

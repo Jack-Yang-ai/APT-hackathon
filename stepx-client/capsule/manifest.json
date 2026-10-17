@@ -1,0 +1,13 @@
+{
+  "applicationId": "ai_PUBLIC_PROJECT_ID",
+  "name": "Apt",
+  "version": "1.0.13",
+  "versionCode": 14,
+  "entry": "web/index.html",
+  "description": "持续记录，按事理解：手机录音分片上传，云端整理成一件件事。",
+  "orientation": "portrait",
+  "fullscreen": false,
+  "permissions": [
+    "record"
+  ]
+}

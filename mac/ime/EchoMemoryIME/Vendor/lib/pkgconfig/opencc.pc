@@ -1,0 +1,11 @@
+prefix=/Users/runner/work/librime/librime
+exec_prefix=${prefix}
+libdir=/Users/runner/work/librime/librime/lib
+includedir=/Users/runner/work/librime/librime/include
+
+Name: opencc
+Description: Open Chinese Convert
+Version: 1.1.9
+Requires:
+Libs: -L${libdir} -lopencc
+Cflags: -I${includedir}/opencc

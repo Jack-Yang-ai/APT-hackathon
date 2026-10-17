@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.growth.voiceprint-daemon</string>
+
+  <!-- 🔴 密钥不进版本库,用 sh -c 现读仓外 secrets.env(不用 sh -lc,见 extract 那份)。
+       ⚠️ **必须走重依赖 venv**:这个 daemon 要 onnxruntime / librosa / soundfile,
+       系统 python3 没有。用 GROWTH_SV_PYTHON 覆盖,与 mac/sv_worker.py 同一条约定。 -->
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/sh</string><string>-c</string>
+    <string>set -a; . "$HOME/.config/growth-agent/secrets.env"; set +a; exec "${GROWTH_SV_PYTHON:-/CONFIGURE_GROWTH_SV_PYTHON}" -u "__REPO_ROOT__/mac/voiceprint_daemon.py"</string>
+  </array>
+
+  <key>WorkingDirectory</key><string>__REPO_ROOT__</string>
+  <key>KeepAlive</key><true/>
+  <key>RunAtLoad</key><true/>
+  <key>ThrottleInterval</key><integer>10</integer>
+  <!-- ⚠️ 文件名必须是 `<Label>.log`,daemons.sh 按 Label 推路径。 -->
+  <key>StandardOutPath</key><string>/Users/YOUR_USER/Library/Logs/growth/com.growth.voiceprint-daemon.log</string>
+  <key>StandardErrorPath</key><string>/Users/YOUR_USER/Library/Logs/growth/com.growth.voiceprint-daemon.log</string>
+</dict>
+</plist>

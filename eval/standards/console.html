@@ -1,0 +1,419 @@
+<title>标准审核台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+:root{
+  --ground:#F3F5F2; --surface:#FFFFFF; --surface-2:#FAFBF9;
+  --ink:#171B1F; --ink-2:#3D464D; --muted:#646D73;
+  --rule:#DBDFD9; --rule-strong:#C2C8BE;
+  --accent:#3E4C7A; --accent-soft:#E7EAF3;
+  --ok:#2F7A57; --ok-soft:#E4F0EA;
+  --warn:#9A6A12; --warn-soft:#F7EEDC;
+  --bad:#A33A34; --bad-soft:#F8E7E5;
+  --unset:#7C848A; --unset-soft:#EDEFEC;
+  --shadow:0 1px 2px rgba(23,27,31,.05),0 4px 16px rgba(23,27,31,.04);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#101418; --surface:#171C21; --surface-2:#1C2228;
+    --ink:#E7EBE6; --ink-2:#B6BEC3; --muted:#8B959B;
+    --rule:#2A3238; --rule-strong:#3A444B;
+    --accent:#93A5DC; --accent-soft:#232B41;
+    --ok:#68B892; --ok-soft:#172C24;
+    --warn:#D8A94F; --warn-soft:#2E2617;
+    --bad:#E27C74; --bad-soft:#331D1B;
+    --unset:#8B959B; --unset-soft:#212830;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.2);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#101418; --surface:#171C21; --surface-2:#1C2228;
+  --ink:#E7EBE6; --ink-2:#B6BEC3; --muted:#8B959B;
+  --rule:#2A3238; --rule-strong:#3A444B;
+  --accent:#93A5DC; --accent-soft:#232B41;
+  --ok:#68B892; --ok-soft:#172C24;
+  --warn:#D8A94F; --warn-soft:#2E2617;
+  --bad:#E27C74; --bad-soft:#331D1B;
+  --unset:#8B959B; --unset-soft:#212830;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.2);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:"IBM Plex Sans","PingFang SC","Hiragino Sans GB",sans-serif;
+  font-size:15px; line-height:1.6; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1280px; margin:0 auto; padding:56px 40px 96px}
+.masthead{border-bottom:2px solid var(--ink); padding-bottom:20px}
+.eyebrow{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--muted); margin:0 0 12px}
+h1{font-family:Newsreader,Georgia,serif; font-weight:600; font-size:44px; line-height:1.1;
+  margin:0 0 10px; letter-spacing:-.01em; text-wrap:balance}
+.dek{margin:0; color:var(--ink-2); max-width:64ch; font-size:16px}
+.stamp{display:flex; gap:26px; flex-wrap:wrap; margin-top:18px;
+  font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--muted)}
+.stamp b{color:var(--ink); font-weight:500}
+
+.scoreboard{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--rule);
+  border:1px solid var(--rule); margin:32px 0 56px; border-radius:3px; overflow:hidden}
+.score{background:var(--surface); padding:18px 20px}
+.score .n{font-family:"IBM Plex Mono",monospace; font-size:30px; font-weight:500; line-height:1;
+  font-variant-numeric:tabular-nums; margin-bottom:7px}
+.score .k{font-size:12.5px; color:var(--muted); line-height:1.45}
+.score.w .n{color:var(--warn)} .score.b .n{color:var(--bad)}
+.score.o .n{color:var(--ok)} .score.u .n{color:var(--unset)}
+
+section{margin-bottom:68px}
+h2{font-family:Newsreader,Georgia,serif; font-weight:600; font-size:27px; margin:0 0 6px}
+.sub{margin:0 0 24px; color:var(--muted); font-size:14.5px; max-width:70ch}
+h3{font-size:15px; font-weight:600; margin:34px 0 12px}
+
+.breaks{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+.brk{background:var(--surface); border:1px solid var(--rule); border-radius:4px;
+  padding:20px 20px 20px 24px; box-shadow:var(--shadow); position:relative; overflow:hidden}
+.brk::before{content:""; position:absolute; inset:0 auto 0 0; width:3px; background:var(--bad)}
+.brk h4{margin:0 0 10px; font-size:15px; font-weight:600}
+.brk p{margin:0 0 10px; font-size:13.5px; color:var(--ink-2)}
+.brk .ev{font-family:"IBM Plex Mono",monospace; font-size:11.5px; color:var(--muted); line-height:1.6}
+.brk .ev b{color:var(--bad); font-weight:500}
+
+.tablewrap{overflow-x:auto; border:1px solid var(--rule); border-radius:4px; background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:13.5px}
+th{text-align:left; font-weight:500; font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--muted); padding:11px 13px; border-bottom:1px solid var(--rule-strong);
+  background:var(--surface-2); white-space:nowrap; position:sticky; top:0; z-index:2}
+td{padding:11px 13px; border-bottom:1px solid var(--rule); vertical-align:top}
+tbody tr:hover{background:var(--surface-2)}
+tr.grp td{background:var(--surface-2); font-weight:600; font-size:12px; letter-spacing:.06em;
+  color:var(--muted); text-transform:uppercase; padding:9px 13px}
+tr.grp:hover td{background:var(--surface-2)}
+.mono,.val,.src{font-family:"IBM Plex Mono",monospace}
+.val{font-size:12.5px; white-space:nowrap; font-variant-numeric:tabular-nums}
+.src{font-size:11px; color:var(--muted); white-space:nowrap}
+.why{color:var(--ink-2); font-size:12.5px; max-width:40ch; line-height:1.5}
+.why em{color:var(--muted); font-style:normal}
+.num{text-align:right; font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums; white-space:nowrap}
+.name{font-weight:500}
+
+.chip{display:inline-block; padding:2px 8px; border-radius:3px; font-size:11.5px;
+  font-weight:500; white-space:nowrap; line-height:1.5}
+.c-user{background:var(--ok-soft); color:var(--ok)}
+.c-measured{background:var(--accent-soft); color:var(--accent)}
+.c-ai{background:var(--warn-soft); color:var(--warn)}
+.c-free{background:var(--ok-soft); color:var(--ok)}
+.c-paid{background:var(--bad-soft); color:var(--bad)}
+
+.filters{display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:14px}
+.fbtn{font-family:inherit; font-size:12.5px; padding:5px 11px; border-radius:3px;
+  border:1px solid var(--rule-strong); background:var(--surface); color:var(--ink-2);
+  cursor:pointer; transition:background .12s,color .12s,border-color .12s}
+.fbtn:hover{background:var(--surface-2)}
+.fbtn[aria-pressed="true"]{background:var(--ink); color:var(--ground); border-color:var(--ink)}
+.fbtn:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+.fspacer{flex:1}
+.fnote{font-size:12px; color:var(--muted); font-family:"IBM Plex Mono",monospace}
+.primary{background:var(--accent); color:#fff; border-color:var(--accent)}
+.primary:hover{background:var(--accent); filter:brightness(1.1)}
+
+.verdict{display:flex; gap:4px}
+.vb{font-family:inherit; font-size:11.5px; padding:3px 8px; border-radius:3px;
+  border:1px solid var(--rule-strong); background:transparent; color:var(--muted);
+  cursor:pointer; white-space:nowrap; transition:all .12s}
+.vb:hover{border-color:var(--ink-2); color:var(--ink)}
+.vb:focus-visible{outline:2px solid var(--accent); outline-offset:1px}
+.vb[aria-pressed="true"][data-v="ok"]{background:var(--ok); border-color:var(--ok); color:#fff}
+.vb[aria-pressed="true"][data-v="fix"]{background:var(--warn); border-color:var(--warn); color:#fff}
+.vb[aria-pressed="true"][data-v="kill"]{background:var(--bad); border-color:var(--bad); color:#fff}
+tr[data-verdict="ok"] td:first-child{box-shadow:inset 3px 0 0 var(--ok)}
+tr[data-verdict="fix"] td:first-child{box-shadow:inset 3px 0 0 var(--warn)}
+tr[data-verdict="kill"] td:first-child{box-shadow:inset 3px 0 0 var(--bad)}
+
+.note{border-left:3px solid var(--accent); background:var(--surface); padding:16px 20px;
+  border-radius:0 4px 4px 0; margin:20px 0; font-size:14px}
+.note.b{border-left-color:var(--bad)}
+.note p{margin:0 0 8px} .note p:last-child{margin:0}
+code{font-family:"IBM Plex Mono",monospace; font-size:.9em; background:var(--unset-soft);
+  padding:1px 5px; border-radius:3px}
+pre.cmd{font-family:"IBM Plex Mono",monospace; font-size:12px; background:var(--surface);
+  border:1px solid var(--rule); border-radius:4px; padding:14px; overflow-x:auto; margin:12px 0 0}
+
+.rules{display:grid; grid-template-columns:repeat(2,1fr); gap:16px}
+.rule{background:var(--surface); border:1px solid var(--rule); border-radius:4px; padding:20px}
+.rule .rn{font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--muted);
+  letter-spacing:.1em; margin-bottom:8px}
+.rule h4{margin:0 0 8px; font-size:15.5px; font-weight:600}
+.rule p{margin:0; font-size:13.5px; color:var(--ink-2)}
+
+footer{border-top:1px solid var(--rule); margin-top:72px; padding-top:20px; font-size:12.5px;
+  color:var(--muted); display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media (max-width:1000px){
+  .wrap{padding:36px 20px 64px}
+  .scoreboard,.breaks,.rules{grid-template-columns:1fr}
+  h1{font-size:33px}
+}
+</style>
+
+<div class="wrap">
+
+<header class="masthead">
+  <p class="eyebrow">growth-app · 判决层</p>
+  <h1>标准审核台</h1>
+  <p class="dek">所有 agent 场景里，<b id="d-total">—</b> 条标准在决定「什么算过、什么被丢掉、花多少钱、产出长什么样」。这一页从代码与任务板<b>自动生成</b>，不手抄。每条摊开：值在哪、<b>谁定的</b>、有没有出处。</p>
+  <div class="stamp">
+    <span>判决层 <b id="d-groups">—</b></span>
+    <span>跑批存档 <b id="d-runs">—</b></span>
+    <span>真实账本 <b id="d-ledger">—</b></span>
+  </div>
+</header>
+
+<div class="scoreboard">
+  <div class="score b"><div class="n" id="s-ai">—</div><div class="k">AI 自己推的<br>你没点过头</div></div>
+  <div class="score u"><div class="n" id="s-noev">—</div><div class="k">给不出出处<br>改了没人知道对不对</div></div>
+  <div class="score o"><div class="n" id="s-user">—</div><div class="k">你拍板过的<br>有定稿可查</div></div>
+  <div class="score w"><div class="n" id="s-done">0</div><div class="k">这一轮你已判<br>（下面点按钮）</div></div>
+</div>
+
+<section>
+  <h2>三处正在说假话</h2>
+  <p class="sub">不是「还没做」，是<b>已经在跑并且给出了错的数</b>。每条都有文件行号。</p>
+  <div class="breaks">
+    <div class="brk">
+      <h4>成本口径反了</h4>
+      <p><code>step-3.7-flash</code> 走免费额度，真实成本 0。价表里填的是官方标价，注释写着「不作决策依据」——而跑批脚本恰恰拿它算了成本。</p>
+      <span class="ev">model_router.py:161 「不作决策依据」<br>run_ab_stages.py:235 <b>拿它做了决策</b><br>⇒「C 臂比 A 便宜 11 倍」<b>方向是反的</b></span>
+    </div>
+    <div class="brk">
+      <h4>账本随 worktree 一起没</h4>
+      <p>记账落 <code>&lt;仓库根&gt;/data/usage.jsonl</code>，而每个 worktree 是各自的根。四个 worktree 的 <code>data/</code> 全空。</p>
+      <span class="ev">主仓账本仅 <b id="e-ledger">—</b> 行<br>A/B 实验 22 次跑的记账行<br><b>随 worktree 删除一起消失</b></span>
+    </div>
+    <div class="brk">
+      <h4>信号被噪声淹没</h4>
+      <p>同 prompt、同模型、同一场录音，跑两次引用的行几乎不重叠。任何 prompt 改动的差异都小于这个。</p>
+      <span class="ev">跨次一致（Jaccard）<b>0.10–0.29</b><br>最长那场 18 行 vs 9 行，<b>只重叠 3 行</b><br>而 <code>temperature</code> 全仓从没设过</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>标准审核台</h2>
+  <p class="sub">一行一条。<b>「谁定的」那一列是这张表存在的理由</b>。判完点「复制判定」，粘回终端就落盘——落盘之后闸才管得住它。</p>
+
+  <div class="filters">
+    <button class="fbtn" data-f="all" aria-pressed="true">全部</button>
+    <button class="fbtn" data-f="ai" aria-pressed="false">AI 推的</button>
+    <button class="fbtn" data-f="noev" aria-pressed="false">没出处</button>
+    <button class="fbtn" data-f="user" aria-pressed="false">你拍板的</button>
+    <button class="fbtn" data-f="measured" aria-pressed="false">实测的</button>
+    <button class="fbtn" data-f="unjudged" aria-pressed="false">我还没判</button>
+    <span class="fspacer"></span>
+    <span class="fnote" id="progress">已判 0</span>
+    <button class="fbtn primary" id="copy">复制判定</button>
+    <button class="fbtn" id="reset">清空</button>
+  </div>
+
+  <div class="tablewrap">
+    <table id="tbl">
+      <thead><tr>
+        <th>标准</th><th>值</th><th>谁定的</th><th>出处 / 问题</th><th>位置</th><th>你的判定</th>
+      </tr></thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+  <pre class="cmd" id="cmdbox" hidden></pre>
+</section>
+
+<section>
+  <h2>成本与消耗</h2>
+  <p class="sub">你说没被可视化给你看过——摊在这里。<b>账面与真实两栏都列</b>，别让标价冒充成本。</p>
+
+  <h3>A/B 实验 · 每臂聚合</h3>
+  <div class="tablewrap"><table id="costtbl">
+    <thead><tr><th>臂</th><th>配方</th><th class="num">跑</th><th class="num">成功</th><th class="num">秒/跑</th>
+      <th class="num">重试/场</th><th class="num">出tok/千字</th><th class="num">账面 $</th><th class="num">真实 $</th>
+      <th class="num">丢弃率</th><th class="num">行覆盖</th><th class="num">跨次一致</th></tr></thead>
+    <tbody id="costbody"></tbody>
+  </table></div>
+
+  <div class="note b">
+    <p><strong>这张表推翻了「C 臂便宜 11 倍」。</strong>按账面是；按真实成本，<b>A 臂是 0，C 臂才是唯一真花钱的</b>。</p>
+    <p>A 臂的真代价不是钱，是<b>慢 10 倍 + 重试 0.83 次/场</b>。免费额度下，时间和重试才是它的账单。</p>
+  </div>
+
+  <h3>真实账本 · data/usage.jsonl</h3>
+  <div class="tablewrap"><table>
+    <thead><tr><th>场景</th><th class="num">次</th><th class="num">输入 tok</th><th class="num">输出 tok</th><th class="num">$</th><th>模型</th></tr></thead>
+    <tbody id="ledgerbody"></tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>四条铁规</h2>
+  <p class="sub">「可控」的意思就是这四条能红。</p>
+  <div class="rules">
+    <div class="rule"><div class="rn">规则 一</div><h4>标准必须有「谁定的」</h4>
+      <p>判决层新增数值常量而没登记 ⇒ <b>闸红</b>。已验过：往 <code>worker/extract.py</code> 加一个常量，闸当场红。</p></div>
+    <div class="rule"><div class="rn">规则 二</div><h4>你判「要改」就不许再生效</h4>
+      <p>登记册里标 <code>fix</code> / <code>kill</code> 而代码还在跑 ⇒ <b>闸红</b>。这是判定管住代码的那根线。</p></div>
+    <div class="rule"><div class="rn">规则 三</div><h4>成本分账面与真实两栏</h4>
+      <p>免费额度的 provider 真实成本记 0。任何拿标价做决策的脚本要单独标出来。</p></div>
+    <div class="rule"><div class="rn">规则 四</div><h4>先降方差，再谈对比</h4>
+      <p>跨次一致性低于线时，跑批台<b>拒绝出对比结论</b>，只报「本次不可比」。<code>temperature</code> 是第一件要做的事。</p></div>
+  </div>
+</section>
+
+<footer>
+  <span>本页由 <code>python3 -m eval.standards.render</code> 生成 · 闸 <code>python3 -m eval.checks.test_standards</code></span>
+  <span>判定不上传 · 复制回终端才落盘</span>
+</footer>
+</div>
+
+<script>
+var DATA = /*__DATA__*/null;
+(function(){
+  if(!DATA){ return; }
+  var S = DATA.standards, verdicts = {};
+  S.forEach(function(s){ if(s.verdict && s.verdict !== "pending") verdicts[s.where] = s.verdict; });
+
+  function noEvidence(s){ return !(s.evidence || "").trim(); }
+  var whoLabel = {user:"你拍板", measured:"实测", ai:"AI 推导"};
+
+  document.getElementById("d-total").textContent = S.length;
+  document.getElementById("d-groups").textContent = DATA.groups.length + " 层 · " + S.length + " 条";
+  document.getElementById("d-runs").textContent = DATA.cost.reduce(function(a,c){return a+c.runs;},0) + " 次跑";
+  document.getElementById("d-ledger").textContent = DATA.ledger_lines + " 行";
+  document.getElementById("e-ledger").textContent = DATA.ledger_lines;
+  document.getElementById("s-ai").textContent = S.filter(function(s){return s.who==="ai";}).length;
+  document.getElementById("s-noev").textContent = S.filter(noEvidence).length;
+  document.getElementById("s-user").textContent = S.filter(function(s){return s.who==="user";}).length;
+
+  var tbody = document.getElementById("tbody"), current = "all";
+
+  function esc(t){ var d=document.createElement("div"); d.textContent = t==null?"":t; return d.innerHTML; }
+
+  function build(){
+    tbody.innerHTML = "";
+    var shown = S.filter(function(s){
+      return current==="all" ? true
+        : current==="ai" ? s.who==="ai"
+        : current==="noev" ? noEvidence(s)
+        : current==="user" ? s.who==="user"
+        : current==="measured" ? s.who==="measured"
+        : current==="unjudged" ? !verdicts[s.where]
+        : true;
+    });
+    var lastGroup = null;
+    shown.forEach(function(s){
+      if(s.group !== lastGroup){
+        lastGroup = s.group;
+        var g = tbody.insertRow();
+        g.className = "grp";
+        var c = g.insertCell(); c.colSpan = 6; c.textContent = s.group;
+      }
+      var tr = tbody.insertRow();
+      tr.dataset.verdict = verdicts[s.where] || "";
+      var why = s.note || s.evidence || s.comment || s.context || "";
+      if(!why) why = "<em>没有任何注释或出处</em>";
+      else why = esc(why);
+      tr.innerHTML =
+        '<td class="name">' + esc(s.title) + '</td>' +
+        '<td class="val">' + esc(s.value) + '</td>' +
+        '<td><span class="chip c-' + s.who + '">' + whoLabel[s.who] + '</span></td>' +
+        '<td class="why">' + why + '</td>' +
+        '<td class="src">' + esc(s.file.split("/").slice(-1)[0] + (s.line ? ":" + s.line : "")) + '</td>' +
+        '<td></td>';
+      var box = document.createElement("div");
+      box.className = "verdict";
+      [["ok","过"],["fix","要改"],["kill","作废"]].forEach(function(p){
+        var b = document.createElement("button");
+        b.className = "vb"; b.dataset.v = p[0]; b.textContent = p[1];
+        b.setAttribute("aria-pressed", verdicts[s.where]===p[0] ? "true":"false");
+        b.addEventListener("click", function(){
+          var next = verdicts[s.where]===p[0] ? "" : p[0];
+          if(next) verdicts[s.where] = next; else delete verdicts[s.where];
+          tr.dataset.verdict = next;
+          Array.prototype.forEach.call(box.children, function(sib){
+            sib.setAttribute("aria-pressed", sib.dataset.v===next ? "true":"false");
+          });
+          refresh();
+        });
+        box.appendChild(b);
+      });
+      tr.cells[5].appendChild(box);
+    });
+  }
+
+  function refresh(){
+    var n = Object.keys(verdicts).length;
+    document.getElementById("progress").textContent = "已判 " + n;
+    document.getElementById("s-done").textContent = n;
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll(".fbtn[data-f]"), function(b){
+    b.addEventListener("click", function(){
+      current = b.dataset.f;
+      Array.prototype.forEach.call(document.querySelectorAll(".fbtn[data-f]"), function(o){
+        o.setAttribute("aria-pressed", o===b ? "true":"false");
+      });
+      build();
+    });
+  });
+
+  document.getElementById("reset").addEventListener("click", function(){
+    verdicts = {}; build(); refresh();
+    document.getElementById("cmdbox").hidden = true;
+  });
+
+  document.getElementById("copy").addEventListener("click", function(){
+    var payload = {};
+    Object.keys(verdicts).forEach(function(k){ payload[k] = {verdict: verdicts[k]}; });
+    var cmd = "python3 -m eval.standards.manifest --apply '" +
+      JSON.stringify(payload).replace(/'/g, "'\\''") + "'";
+    var box = document.getElementById("cmdbox");
+    box.textContent = cmd; box.hidden = false;
+    if(navigator.clipboard){ navigator.clipboard.writeText(cmd).catch(function(){}); }
+    box.scrollIntoView({block:"nearest"});
+  });
+
+  // ── 成本 ──
+  var cb = document.getElementById("costbody");
+  function fmt(v, d){ return v==null ? "—" : (d==null ? v : Number(v).toFixed(d)); }
+  function pct(v){ return v==null ? "—" : (v*100).toFixed(1) + "%"; }
+  DATA.cost.forEach(function(c){
+    var tr = cb.insertRow();
+    tr.innerHTML =
+      '<td class="name">' + c.arm + '</td>' +
+      '<td class="why">' + esc(c.recipe) + (c.tag ? ' <span class="chip c-measured">'+c.tag+'</span>' : '') + '</td>' +
+      '<td class="num">' + c.runs + '</td>' +
+      '<td class="num"' + (c.ok_rate<1 ? ' style="color:var(--bad)"':'') + '>' + pct(c.ok_rate) + '</td>' +
+      '<td class="num">' + fmt(c.seconds,1) + '</td>' +
+      '<td class="num">' + fmt(c.retry_rate,2) + '</td>' +
+      '<td class="num">' + (c.out_per_kchar==null?"—":Math.round(c.out_per_kchar).toLocaleString()) + '</td>' +
+      '<td class="num">' + fmt(c.paper_usd,4) + '</td>' +
+      '<td class="num">' + (c.free
+          ? '<span class="chip c-free">0 免费</span>'
+          : '<span class="chip c-paid">' + fmt(c.real_usd,4) + '</span>') + '</td>' +
+      '<td class="num">' + pct(c.discard_rate) + '</td>' +
+      '<td class="num">' + pct(c.line_coverage) + '</td>' +
+      '<td class="num">' + fmt(c.jaccard_lines,2) + '</td>';
+  });
+
+  var lb = document.getElementById("ledgerbody"), tot = 0;
+  DATA.ledger.forEach(function(r){
+    tot += r.usd;
+    var tr = lb.insertRow();
+    tr.innerHTML = '<td class="name">' + esc(r.scene) + '</td><td class="num">' + r.n +
+      '</td><td class="num">' + r.inp.toLocaleString() + '</td><td class="num">' + r.out.toLocaleString() +
+      '</td><td class="num">' + r.usd.toFixed(4) + '</td><td class="src">' + esc(r.models) + '</td>';
+  });
+  var tr = lb.insertRow(); tr.style.fontWeight = "600";
+  tr.innerHTML = '<td>合计</td><td class="num">' +
+    DATA.ledger.reduce(function(a,r){return a+r.n;},0) + '</td><td class="num">—</td><td class="num">—</td><td class="num">' +
+    tot.toFixed(4) + '</td><td class="src">≈ ¥' + (tot*7.2).toFixed(2) + '</td>';
+
+  build(); refresh();
+})();
+</script>

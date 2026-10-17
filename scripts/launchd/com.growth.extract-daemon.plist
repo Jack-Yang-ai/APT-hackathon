@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.growth.extract-daemon</string>
+
+  <!-- 🔴 密钥**不能**写进 plist(它进版本库)。用 sh -c 现读仓外的 secrets.env。
+       ⚠️ 不用 `sh -lc`:登录 shell 会加载用户 profile,而 launchd 起的进程没有
+       交互终端,profile 里任何一句交互式的东西都会把它挂住 —— 而挂住的表现是
+       「装了但没在跑」,正是这套东西要解决的问题本身。 -->
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/sh</string><string>-c</string>
+    <string>set -a; . "$HOME/.config/growth-agent/secrets.env"; set +a; exec /usr/bin/python3 -u "__REPO_ROOT__/mac/extract_daemon.py"</string>
+  </array>
+
+  <key>WorkingDirectory</key><string>__REPO_ROOT__</string>
+  <!-- 常驻循环:挂了就拉起来。 -->
+  <key>KeepAlive</key><true/>
+  <key>RunAtLoad</key><true/>
+  <!-- 挂了立刻重启会烧 CPU;10 秒足够看清是不是在崩循环。 -->
+  <key>ThrottleInterval</key><integer>10</integer>
+  <!-- ⚠️ 文件名**必须**是 `<Label>.log` —— `scripts/daemons.sh` 的 status
+       按 Label 推路径去查它。两处对不上时**什么都不会红**,
+       只是 status 永远说「日志是空的」而实际它跑得好好的(2026-08-21 踩过)。 -->
+  <key>StandardOutPath</key><string>/Users/YOUR_USER/Library/Logs/growth/com.growth.extract-daemon.log</string>
+  <key>StandardErrorPath</key><string>/Users/YOUR_USER/Library/Logs/growth/com.growth.extract-daemon.log</string>
+</dict>
+</plist>

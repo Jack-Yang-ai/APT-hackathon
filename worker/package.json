@@ -1,0 +1,16 @@
+{
+  "name": "growth-cloud-proxy",
+  "version": "1.0.0",
+  "description": "云代理 Worker:转发转写与 LLM,持有模型密钥,成本记账",
+  "scripts": {
+    "dev": "wrangler dev",
+    "test": "node test_accounting.mjs && node test_asr_sse.mjs && node test_extract.mjs && node test_collector.mjs && node test_usage.mjs && node test_submit_idempotency.mjs && node test_key_query.mjs && node test_extract_queue.mjs && node test_purge.mjs && node test_input_memory.mjs && node ../mac/test_input_memory.mjs && node ../mac/test_common_agent.mjs && node ../mac/test_recording_memory.mjs"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "wrangler": "^4.120.0"
+  },
+  "private": true
+}

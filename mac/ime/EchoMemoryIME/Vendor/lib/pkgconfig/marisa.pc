@@ -1,0 +1,8 @@
+libdir=/Users/runner/work/librime/librime/lib
+includedir=/Users/runner/work/librime/librime/include
+
+Name: Marisa
+Description: Matching Algorithm with Recursively Implemented StorAge
+Version: 0.3.1
+Cflags: -I${includedir}
+Libs: -L${libdir} -lmarisa

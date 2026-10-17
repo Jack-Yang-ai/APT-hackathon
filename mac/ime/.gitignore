@@ -1,0 +1,5 @@
+work/
+*.app/
+.DS_Store
+__pycache__/
+.claude/worktrees/

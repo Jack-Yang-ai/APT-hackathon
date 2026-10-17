@@ -1,0 +1,838 @@
+{
+  "_": "由 eval/checks/gen_extract_golden.py 生成,勿手改。两侧测试共读。",
+  "normalizer_version": "v1",
+  "prompt_version": "v1",
+  "normalize": [
+    {
+      "in": "周三之前把文档给老王。",
+      "out": "周三之前把文档给老王"
+    },
+    {
+      "in": "ＡＢＣ, 你好！",
+      "out": "abc你好"
+    },
+    {
+      "in": "abc你好",
+      "out": "abc你好"
+    },
+    {
+      "in": "Hello　World",
+      "out": "helloworld"
+    },
+    {
+      "in": "Straße",
+      "out": "strasse"
+    },
+    {
+      "in": "ΣΟΦΟΣ",
+      "out": "σοφοσ"
+    },
+    {
+      "in": "σοφος",
+      "out": "σοφοσ"
+    },
+    {
+      "in": "İstanbul",
+      "out": "i̇stanbul"
+    },
+    {
+      "in": "ﬁle",
+      "out": "file"
+    },
+    {
+      "in": "ﬅ",
+      "out": "st"
+    },
+    {
+      "in": "ﬄ",
+      "out": "ffl"
+    },
+    {
+      "in": "①②③",
+      "out": "123"
+    },
+    {
+      "in": "Ⅷ",
+      "out": "viii"
+    },
+    {
+      "in": "㈱",
+      "out": "株"
+    },
+    {
+      "in": "㋿",
+      "out": "令和"
+    },
+    {
+      "in": "℡",
+      "out": "tel"
+    },
+    {
+      "in": "㎡",
+      "out": "m2"
+    },
+    {
+      "in": "１２３",
+      "out": "123"
+    },
+    {
+      "in": "áé",
+      "out": "áé"
+    },
+    {
+      "in": "naïve",
+      "out": "naïve"
+    },
+    {
+      "in": "emoji😀里",
+      "out": "emoji里"
+    },
+    {
+      "in": "tab\there",
+      "out": "tabhere"
+    },
+    {
+      "in": "nl\nhere",
+      "out": "nlhere"
+    },
+    {
+      "in": "nbsp here",
+      "out": "nbsphere"
+    },
+    {
+      "in": "＋－×÷",
+      "out": ""
+    },
+    {
+      "in": "~+=°",
+      "out": ""
+    },
+    {
+      "in": "¥100",
+      "out": "100"
+    },
+    {
+      "in": "＄5",
+      "out": "5"
+    },
+    {
+      "in": "№7",
+      "out": "no7"
+    },
+    {
+      "in": "♪♫",
+      "out": ""
+    },
+    {
+      "in": "→←",
+      "out": ""
+    },
+    {
+      "in": "《书名》",
+      "out": "书名"
+    },
+    {
+      "in": "「引号」",
+      "out": "引号"
+    },
+    {
+      "in": "…省略",
+      "out": "省略"
+    },
+    {
+      "in": "——破折",
+      "out": "破折"
+    },
+    {
+      "in": "ｱｲｳ",
+      "out": "アイウ"
+    },
+    {
+      "in": "アイウ",
+      "out": "アイウ"
+    },
+    {
+      "in": "ｶﾞ",
+      "out": "ガ"
+    },
+    {
+      "in": "ガ",
+      "out": "ガ"
+    },
+    {
+      "in": "",
+      "out": ""
+    }
+  ],
+  "verbatim": [
+    {
+      "quote": "把文档给老王",
+      "source": "我周三之前把文档给老王,行吧",
+      "ok": true
+    },
+    {
+      "quote": "把 文档 给 老王",
+      "source": "我周三之前把文档给老王,行吧",
+      "ok": true
+    },
+    {
+      "quote": "把文档给老王。",
+      "source": "我周三之前把文档给老王,行吧",
+      "ok": true
+    },
+    {
+      "quote": "把文档给小李",
+      "source": "我周三之前把文档给老王,行吧",
+      "ok": false
+    },
+    {
+      "quote": "",
+      "source": "随便什么原文",
+      "ok": false
+    },
+    {
+      "quote": "原文",
+      "source": "",
+      "ok": false
+    },
+    {
+      "quote": "",
+      "source": "",
+      "ok": false
+    },
+    {
+      "quote": "。",
+      "source": "随便什么原文",
+      "ok": false
+    },
+    {
+      "quote": "  ",
+      "source": "随便什么原文",
+      "ok": false
+    },
+    {
+      "quote": "……!?",
+      "source": "随便什么原文",
+      "ok": false
+    },
+    {
+      "quote": "~+=°",
+      "source": "他说 ~+=° 这几个符号",
+      "ok": false
+    },
+    {
+      "quote": "ＡＢＣ",
+      "source": "他说 abc 就行",
+      "ok": true
+    },
+    {
+      "quote": "周三前",
+      "source": "我周三之前把文档给老王",
+      "ok": false
+    }
+  ],
+  "lines": [
+    {
+      "line_id": 10,
+      "text": "我周三之前把文档给老王,行吧",
+      "is_gap": 0,
+      "person_id": 1,
+      "cluster_tag": "说话人1"
+    },
+    {
+      "line_id": 11,
+      "text": "我觉得这个方案不行",
+      "is_gap": 0,
+      "person_id": 2,
+      "cluster_tag": "说话人2"
+    },
+    {
+      "line_id": 12,
+      "text": "先把首页定下来",
+      "is_gap": 0,
+      "person_id": null,
+      "cluster_tag": "说话人2"
+    },
+    {
+      "line_id": 13,
+      "text": "这段没听清",
+      "is_gap": 1,
+      "person_id": 1,
+      "cluster_tag": "说话人1"
+    }
+  ],
+  "validate": [
+    {
+      "name": "全过",
+      "payload": {
+        "one_liner": "把首页定下来",
+        "key_points": [],
+        "commitments": [
+          {
+            "what": "给老王文档",
+            "quote": "把文档给老王",
+            "line_id": 10,
+            "to_whom_text": "老王",
+            "speaker_hint": "说话人1"
+          }
+        ],
+        "stances": [],
+        "pendings": [],
+        "topic_keys": []
+      },
+      "clean": {
+        "one_liner": "把首页定下来",
+        "topic_keys": [],
+        "key_points": [],
+        "commitments": [
+          {
+            "what": "给老王文档",
+            "quote": "把文档给老王",
+            "line_id": 10,
+            "to_whom_text": "老王"
+          }
+        ],
+        "stances": [],
+        "pendings": []
+      },
+      "stats": {
+        "total": 1,
+        "passed": 1,
+        "pending": 0,
+        "discarded": 0,
+        "failure_rate": 0.0,
+        "pending_rate": 0.0,
+        "discard_reasons": {},
+        "pending_reasons": {},
+        "normalizer_version": "v1",
+        "prompt_version": "v1"
+      }
+    },
+    {
+      "name": "行号不存在 → 丢弃",
+      "payload": {
+        "one_liner": "把首页定下来",
+        "key_points": [
+          {
+            "point": "编的",
+            "quote": "随便",
+            "line_id": 999
+          }
+        ],
+        "commitments": [],
+        "stances": [],
+        "pendings": [],
+        "topic_keys": []
+      },
+      "clean": {
+        "one_liner": "把首页定下来",
+        "topic_keys": [],
+        "key_points": [],
+        "commitments": [],
+        "stances": [],
+        "pendings": []
+      },
+      "stats": {
+        "total": 1,
+        "passed": 0,
+        "pending": 0,
+        "discarded": 1,
+        "failure_rate": 1.0,
+        "pending_rate": 0.0,
+        "discard_reasons": {
+          "行号不存在": 1
+        },
+        "pending_reasons": {},
+        "normalizer_version": "v1",
+        "prompt_version": "v1"
+      }
+    },
+    {
+      "name": "指向占位行 → 丢弃",
+      "payload": {
+        "one_liner": "把首页定下来",
+        "key_points": [
+          {
+            "point": "听不清那段",
+            "quote": "这段没听清",
+            "line_id": 13
+          }
+        ],
+        "commitments": [],
+        "stances": [],
+        "pendings": [],
+        "topic_keys": []
+      },
+      "clean": {
+        "one_liner": "把首页定下来",
+        "topic_keys": [],
+        "key_points": [],
+        "commitments": [],
+        "stances": [],
+        "pendings": []
+      },
+      "stats": {
+        "total": 1,
+        "passed": 0,
+        "pending": 0,
+        "discarded": 1,
+        "failure_rate": 1.0,
+        "pending_rate": 0.0,
+        "discard_reasons": {
+          "指向占位行": 1
+        },
+        "pending_reasons": {},
+        "normalizer_version": "v1",
+        "prompt_version": "v1"
+      }
+    },
+    {
+      "name": "quote 非原文子串 → 丢弃",
+      "payload": {
+        "one_liner": "把首页定下来",
+        "key_points": [],
+        "commitments": [],
+        "stances": [
+          {
+            "stance": "反对",
+            "quote": "我觉得这个方案很好",
+            "line_id": 11,
+            "premise": null,
+            "premise_line_id": null
+          }
+        ],
+        "pendings": [],
+        "topic_keys": []
+      },
+      "clean": {
+        "one_liner": "把首页定下来",
+        "topic_keys": [],
+        "key_points": [],
+        "commitments": [],
+        "stances": [],
+        "pendings": []
+      },
+      "stats": {
+        "total": 1,
+        "passed": 0,
+        "pending": 0,
+        "discarded": 1,
+        "failure_rate": 1.0,
+        "pending_rate": 0.0,
+        "discard_reasons": {
+          "quote 非原文子串": 1
+        },
+        "pending_reasons": {},
+        "normalizer_version": "v1",
+        "prompt_version": "v1"
+      }
+    },
+    {
+      "name": "归属未定 → 挂起,不丢",
+      "payload": {
+        "one_liner": "把首页定下来",
+        "key_points": [
+          {
+            "point": "先定首页",
+            "quote": "先把首页定下来",
+            "line_id": 12,
+            "speaker_hint": "说话人2"
+          }
+        ],
+        "commitments": [],
+        "stances": [],
+        "pendings": [],
+        "topic_keys": []
+      },
+      "clean": {
+        "one_liner": "把首页定下来",
+        "topic_keys": [],
+        "key_points": [
+          {
+            "point": "先定首页",
+            "quote": "先把首页定下来",
+            "line_id": 12,
+            "pending": true
+          }
+        ],
+        "commitments": [],
+        "stances": [],
+        "pendings": []
+      },
+      "stats": {
+        "total": 1,
+        "passed": 0,
+        "pending": 1,
+        "discarded": 0,
+        "failure_rate": 0.0,
+        "pending_rate": 1.0,
+        "discard_reasons": {},
+        "pending_reasons": {
+          "归属未定": 1
+        },
+        "normalizer_version": "v1",
+        "prompt_version": "v1"
+      }
+    },
+    {
+      "name": "speaker_hint 与簇标签不一致 → 挂起",
+      "payload": {
+        "one_liner": "把首页定下来",
+        "key_points": [
+          {
+            "point": "先定首页",
+            "quote": "我觉得这个方案不行",
+            "line_id": 11,
+            "speaker_hint": "说话人7"
+          }
+        ],
+        "commitments": [],
+        "stances": [],
+        "pendings": [],
+        "topic_keys": []
+      },
+      "clean": {
+        "one_liner": "把首页定下来",
+        "topic_keys": [],
+        "key_points": [
+          {
+            "point": "先定首页",
+            "quote": "我觉得这个方案不行",
+            "line_id": 11,
+            "pending": true
+          }
+        ],
+        "commitments": [],
+        "stances": [],
+        "pendings": []
+      },
+      "stats": {
+        "total": 1,
+        "passed": 0,
+        "pending": 1,
+        "discarded": 0,
+        "failure_rate": 0.0,
+        "pending_rate": 1.0,
+        "discard_reasons": {},
+        "pending_reasons": {
+          "簇标签与 speaker_hint 不一致": 1
+        },
+        "normalizer_version": "v1",
+        "prompt_version": "v1"
+      }
+    },
+    {
+      "name": "speaker_hint 缺失不算不一致",
+      "payload": {
+        "one_liner": "把首页定下来",
+        "key_points": [
+          {
+            "point": "先定首页",
+            "quote": "我觉得这个方案不行",
+            "line_id": 11
+          }
+        ],
+        "commitments": [],
+        "stances": [],
+        "pendings": [],
+        "topic_keys": []
+      },
+      "clean": {
+        "one_liner": "把首页定下来",
+        "topic_keys": [],
+        "key_points": [
+          {
+            "point": "先定首页",
+            "quote": "我觉得这个方案不行",
+            "line_id": 11
+          }
+        ],
+        "commitments": [],
+        "stances": [],
+        "pendings": []
+      },
+      "stats": {
+        "total": 1,
+        "passed": 1,
+        "pending": 0,
+        "discarded": 0,
+        "failure_rate": 0.0,
+        "pending_rate": 0.0,
+        "discard_reasons": {},
+        "pending_reasons": {},
+        "normalizer_version": "v1",
+        "prompt_version": "v1"
+      }
+    },
+    {
+      "name": "topic_keys 只留存在的行号",
+      "payload": {
+        "one_liner": "把首页定下来",
+        "key_points": [],
+        "commitments": [],
+        "stances": [],
+        "pendings": [],
+        "topic_keys": [
+          {
+            "key": "首页",
+            "line_ids": [
+              10,
+              999,
+              12
+            ]
+          }
+        ]
+      },
+      "clean": {
+        "one_liner": "把首页定下来",
+        "topic_keys": [
+          {
+            "key": "首页",
+            "line_ids": [
+              10,
+              12
+            ]
+          }
+        ],
+        "key_points": [],
+        "commitments": [],
+        "stances": [],
+        "pendings": []
+      },
+      "stats": {
+        "total": 0,
+        "passed": 0,
+        "pending": 0,
+        "discarded": 0,
+        "failure_rate": null,
+        "pending_rate": null,
+        "discard_reasons": {},
+        "pending_reasons": {},
+        "normalizer_version": "v1",
+        "prompt_version": "v1"
+      }
+    },
+    {
+      "name": "四类混在一起,计数要对得上",
+      "payload": {
+        "one_liner": "把首页定下来",
+        "key_points": [
+          {
+            "point": "a",
+            "quote": "先把首页定下来",
+            "line_id": 12
+          },
+          {
+            "point": "b",
+            "quote": "编的引文",
+            "line_id": 10
+          }
+        ],
+        "commitments": [
+          {
+            "what": "c",
+            "quote": "把文档给老王",
+            "line_id": 10,
+            "speaker_hint": "说话人1"
+          }
+        ],
+        "stances": [
+          {
+            "stance": "d",
+            "quote": "这个方案不行",
+            "line_id": 11,
+            "speaker_hint": "说话人2",
+            "premise": null,
+            "premise_line_id": null
+          }
+        ],
+        "pendings": [
+          {
+            "issue": "e",
+            "quote": "随便",
+            "line_id": 999,
+            "parties_text": [
+              "老王"
+            ]
+          }
+        ],
+        "topic_keys": []
+      },
+      "clean": {
+        "one_liner": "把首页定下来",
+        "topic_keys": [],
+        "key_points": [
+          {
+            "point": "a",
+            "quote": "先把首页定下来",
+            "line_id": 12,
+            "pending": true
+          }
+        ],
+        "commitments": [
+          {
+            "what": "c",
+            "quote": "把文档给老王",
+            "line_id": 10
+          }
+        ],
+        "stances": [
+          {
+            "stance": "d",
+            "quote": "这个方案不行",
+            "line_id": 11,
+            "premise": null,
+            "premise_line_id": null
+          }
+        ],
+        "pendings": []
+      },
+      "stats": {
+        "total": 5,
+        "passed": 2,
+        "pending": 1,
+        "discarded": 2,
+        "failure_rate": 0.4,
+        "pending_rate": 0.2,
+        "discard_reasons": {
+          "quote 非原文子串": 1,
+          "行号不存在": 1
+        },
+        "pending_reasons": {
+          "归属未定": 1
+        },
+        "normalizer_version": "v1",
+        "prompt_version": "v1"
+      }
+    },
+    {
+      "name": "一条都没有时不该炸",
+      "payload": {
+        "one_liner": "把首页定下来",
+        "key_points": [],
+        "commitments": [],
+        "stances": [],
+        "pendings": [],
+        "topic_keys": []
+      },
+      "clean": {
+        "one_liner": "把首页定下来",
+        "topic_keys": [],
+        "key_points": [],
+        "commitments": [],
+        "stances": [],
+        "pendings": []
+      },
+      "stats": {
+        "total": 0,
+        "passed": 0,
+        "pending": 0,
+        "discarded": 0,
+        "failure_rate": null,
+        "pending_rate": null,
+        "discard_reasons": {},
+        "pending_reasons": {},
+        "normalizer_version": "v1",
+        "prompt_version": "v1"
+      }
+    }
+  ],
+  "schema_rejects": [
+    {
+      "name": "缺 one_liner",
+      "payload": {
+        "key_points": [],
+        "commitments": [],
+        "stances": [],
+        "pendings": [],
+        "topic_keys": []
+      },
+      "error": "SchemaError"
+    },
+    {
+      "name": "one_liner 不是字符串",
+      "payload": {
+        "one_liner": 42,
+        "key_points": [],
+        "commitments": [],
+        "stances": [],
+        "pendings": [],
+        "topic_keys": []
+      },
+      "error": "SchemaError"
+    },
+    {
+      "name": "整类省略了(该给空数组)",
+      "payload": {
+        "one_liner": "把首页定下来",
+        "key_points": [],
+        "commitments": [],
+        "pendings": [],
+        "topic_keys": []
+      },
+      "error": "SchemaError"
+    },
+    {
+      "name": "某类不是数组",
+      "payload": {
+        "one_liner": "把首页定下来",
+        "key_points": {},
+        "commitments": [],
+        "stances": [],
+        "pendings": [],
+        "topic_keys": []
+      },
+      "error": "SchemaError"
+    },
+    {
+      "name": "条目不是对象",
+      "payload": {
+        "one_liner": "把首页定下来",
+        "key_points": [
+          "字符串"
+        ],
+        "commitments": [],
+        "stances": [],
+        "pendings": [],
+        "topic_keys": []
+      },
+      "error": "SchemaError"
+    },
+    {
+      "name": "条目缺必填字段",
+      "payload": {
+        "one_liner": "把首页定下来",
+        "key_points": [
+          {
+            "point": "a",
+            "quote": "b"
+          }
+        ],
+        "commitments": [],
+        "stances": [],
+        "pendings": [],
+        "topic_keys": []
+      },
+      "error": "SchemaError"
+    },
+    {
+      "name": "出现了 who —— 归属只能有一个真相源",
+      "payload": {
+        "one_liner": "把首页定下来",
+        "key_points": [
+          {
+            "point": "a",
+            "quote": "先把首页定下来",
+            "line_id": 12,
+            "who": "老王"
+          }
+        ],
+        "commitments": [],
+        "stances": [],
+        "pendings": [],
+        "topic_keys": []
+      },
+      "error": "SchemaError"
+    }
+  ]
+}

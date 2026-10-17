@@ -1,0 +1,16 @@
+{
+  "logo": {
+    "approved": "assets/brand/logo-approved.png",
+    "operation": "image_gen background extraction",
+    "prompt": "Use case: background-extraction\nAsset type: production Apt logo transparent PNG master for native app, web and macOS menu bar export.\nInput image 1 is the approved final logo. Preserve the exact blue symbol: silhouette, scale, proportions, flowing upper and lower lobes, both interior openings, short lower-right stem and all edge contours.\nPrimary request: Remove ONLY the plain warm-white background, including all warm-white negative space inside the logo, and make it genuinely transparent. Keep the approved solid blue mark unchanged. Clean crisp smooth antialiased edges, no floating specks, no white matte halo. Do not reinterpret, redraw, beautify, add to, remove parts from, or change the logo. Same square canvas and even clear margin.\nConstraints: output contains only the original blue logo and true alpha transparency. No background, no floor, no shadow, no text, no new details."
+  },
+  "agent": {
+    "approved": "assets/brand/agent-source.png",
+    "palette": {
+      "body": "#C2CEF3",
+      "face": "#17223A"
+    },
+    "prompt": "Use case: precise-object-edit\nAsset type: Apt simplified Agent mascot, color-only update to match the actual app design system, transparent PNG.\nInput image 1 is the EDIT TARGET.\nPrimary request: Change ONLY the colors of the supplied simple dumpling mascot so it belongs naturally in Apt's existing UI. Preserve the exact silhouette, size, proportions, irregular top curve, face placement, eye shapes, eye spacing, mouth shape, pose and clearspace.\nVerified app palette: page background #F4F7FC; white cards #FFFFFF; brand blue #3657D6; soft brand surfaces #EAF0FF; deep navy text #17223A.\nNew character palette: replace the warm yellow/cream body with a muted, soft misty periwinkle blue, dominant color approximately #C2CEF3, derived from the brand blue and noticeably richer than #EAF0FF so the body remains distinguishable against white cards and pale blue pages. Keep the feeling soft and friendly. Retain at most the very faint soft tonal variation already present in the target, with a lighter touch near #E4EAFC; no distinct highlight patches, no extra layers. Change the brown eyes and mouth to solid deep navy #17223A from the app's actual text color.\nConstraints: COLOR CHANGE ONLY. The same one-piece dumpling, exactly two eyes and one mouth. Genuine transparent background as in the original. Clean smooth silhouette edges, balanced empty margin. No new facial features, no blush, no eyebrows, no nose, no hair, no limbs, no clothing, no outline, no details, no icon tile, no labels, no text, no watermark.\nAvoid: saturated electric blue body, purple body, yellow, orange, brown face, rainbow gradient, glossy plastic, 3D extrusion, strong shadows, background or floor, geometry or expression changes."
+  },
+  "export": "scripts/export_brand_assets.py"
+}

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- viewport-fit=cover 是安全区适配的前提；不禁止缩放，双指缩放的误触由 touch-action 控制 -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="color-scheme" content="light" />
+    <!-- 与 ios-theme.css 里的背景色（浅蓝）一致，避免启动瞬间闪一条冷色状态栏 -->
+    <meta name="theme-color" content="#F4F7FC" />
+    <!-- 首帧不依赖主包、图片或外置样式；原生启动窗由平台容器控制。 -->
+    <style>
+      html, body { margin: 0; min-height: 100%; background: rgb(var(--background)); }
+      #root { min-height: 100vh; min-height: 100dvh; }
+      #apt-startup { position: fixed; inset: 0; z-index: 2147483647; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; overflow: auto; padding: max(32px, env(safe-area-inset-top, 0px)) 28px max(40px, env(safe-area-inset-bottom, 0px)); background: radial-gradient(ellipse at 50% 40%, rgb(var(--primary-soft)), rgb(var(--background)) 66%); text-align: center; color: rgb(var(--foreground)); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans', sans-serif; }
+      #apt-startup p { margin: 0; line-height: 1.42; }
+      .apt-startup-brand { display: flex; flex: 1 0 auto; flex-direction: column; align-items: center; justify-content: center; gap: 20px; padding: 28px 0 72px; }
+      .apt-startup-mark { display: grid; place-items: center; width: 104px; height: 104px; border: 1px solid rgb(var(--primary) / 0.04); border-radius: 30px; background: rgb(var(--surface)); box-shadow: 0 16px 48px -18px rgb(var(--primary) / 0.2); }
+      .apt-startup-mark img { display: block; width: 68px; height: 68px; object-fit: contain; }
+      #apt-startup-title { font-size: 32px; font-weight: 600; letter-spacing: -1px; }
+      .apt-startup-feedback { display: grid; flex: 0 0 auto; justify-items: center; align-content: start; gap: 14px; width: 100%; max-width: 300px; min-height: 92px; }
+      #apt-startup-detail { color: rgb(var(--muted-foreground)); font-size: 14px; }
+      #apt-startup-retry { min-height: 44px; padding: 10px 24px; border: 1px solid rgb(var(--primary) / 0.12); border-radius: 22px; color: rgb(var(--primary)); background: rgb(var(--surface)); font: inherit; font-size: 14px; font-weight: 500; cursor: pointer; }
+      #apt-startup-retry[hidden] { display: none; }
+      #apt-startup-retry:focus-visible { outline: 2px solid rgb(var(--primary)); outline-offset: 3px; }
+      .apt-startup-dots { display: flex; order: -1; gap: 6px; height: 8px; align-items: center; }
+      .apt-startup-dots span { width: 5px; height: 5px; border-radius: 50%; background: rgb(var(--primary)); opacity: 0.3; animation: apt-startup-pulse 1.5s ease-in-out infinite; }
+      .apt-startup-dots span:nth-child(2) { animation-delay: 0.18s; }
+      .apt-startup-dots span:nth-child(3) { animation-delay: 0.36s; }
+      #apt-startup-retry:not([hidden]) + .apt-startup-dots { display: none; }
+      @keyframes apt-startup-pulse { 0%, 80%, 100% { opacity: 0.3; } 40% { opacity: 0.8; } }
+      @media (prefers-reduced-motion: reduce) { .apt-startup-dots span { animation: none; opacity: 0.5; } }
+      @media (max-height: 480px) { .apt-startup-brand { padding: 8px 0 28px; gap: 12px; } .apt-startup-mark { width: 80px; height: 80px; border-radius: 24px; } .apt-startup-mark img { width: 54px; height: 54px; } .apt-startup-feedback { min-height: 72px; } }
+    </style>
+    <meta name="format-detection" content="telephone=no,email=no,address=no" />
+    <link rel="icon" type="image/png" href="/src/assets/apt-logo.png" />
+    <!-- 登录态作用域：App UI 与 Admin UI 各自独立保存会话，同源部署 / 预览下也不会互相串号。
+         admin.html 声明 content="admin"；该值由 src/shared/track.ts 读取，决定 auth 的 storageKey，不要删除或改错。 -->
+    <meta name="ui-scope" content="app" />
+    <title>Apt</title>
+  </head>
+  <body>
+    <main id="apt-startup" aria-label="正在打开 Apt">
+      <div class="apt-startup-brand" aria-hidden="true">
+        <div class="apt-startup-mark">
+          <img src="/src/assets/apt-logo.png" width="68" height="68" alt="" decoding="async" fetchpriority="high" />
+        </div>
+        <p id="apt-startup-title">Apt</p>
+      </div>
+      <div class="apt-startup-feedback">
+        <p id="apt-startup-detail" role="status" aria-live="polite">正在打开…</p>
+        <button id="apt-startup-retry" type="button" hidden>重新打开</button>
+        <span class="apt-startup-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+      </div>
+    </main>
+    <div id="root"></div>
+    <script>
+      (function () {
+        var boot = document.getElementById('apt-startup')
+        var detail = document.getElementById('apt-startup-detail')
+        var retry = document.getElementById('apt-startup-retry')
+        function cleanup() {
+          window.clearTimeout(timer)
+          window.removeEventListener('error', failed, true)
+          window.removeEventListener('apt:ui-ready', ready)
+        }
+        function ready() {
+          boot.remove()
+          cleanup()
+        }
+        function failed(event) {
+          // 只认主模块资源错误；SDK异常不能冒充主界面失败。
+          if (!(event.target.tagName === 'SCRIPT' && event.target.type === 'module')) return
+          if (!boot.isConnected) { cleanup(); return }
+          detail.textContent = '界面未能打开，请重试。'
+          retry.hidden = false
+          window.clearTimeout(timer)
+        }
+        var timer = window.setTimeout(function () {
+          if (!boot.isConnected) { cleanup(); return }
+          detail.textContent = '打开比平时慢，可以稍候或重试。'
+          retry.hidden = false
+        }, 8000)
+        retry.addEventListener('click', function () { if (boot.isConnected) window.location.reload() })
+        window.addEventListener('error', failed, true)
+        window.addEventListener('apt:ui-ready', ready, { once: true })
+      })()
+    </script>
+    <!--
+      壳桥接 SDK（/sdk/capsule.js）不在这里静态引入：浏览器 / 平台预览没有它，直接写会 404。
+      它由构建期插件（vite.config.ts 的 capsuleSdkInjectPlugin）注入进产物 HTML，只在壳内可达
+      （测试包主机 appassets.t-stepos.com，线上包 appassets.stepaos.com），不要手写 <script> 到这里。
+      预览里加载不到时桥接层回落到 mock（见 src/shared/bridge/loader.ts）。
+    -->
+    <script type="module" src="/src/app/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.growth.asr-fallback</string>
+
+  <!-- 🔴 **这一条是被实测逼出来的。** `mac/asr_fallback.py`(M1-34)写好、测过、
+       从来没人常驻 ⇒ 2026-08-21 某场次 的那一块**干等了 98 分钟**,
+       而它的设计是「超 10 分钟就换 SSE」。**写好了不等于在跑。** -->
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/sh</string><string>-c</string>
+    <string>set -a; . "$HOME/.config/growth-agent/secrets.env"; set +a; cd "$HOME/APT" &amp;&amp; exec /usr/bin/python3 -u -m mac.asr_fallback</string>
+  </array>
+
+  <key>WorkingDirectory</key><string>__REPO_ROOT__</string>
+  <!-- 一次性扫描,不是常驻 ⇒ 用 StartInterval 定时跑,**不要 KeepAlive**
+       (KeepAlive 会让它退出后立刻重启,变成不停歇的死循环)。
+       120 秒:换路的判据是「卡了 10 分钟」,扫得比它密就够,再密只是白扫。 -->
+  <key>StartInterval</key><integer>120</integer>
+  <key>RunAtLoad</key><true/>
+  <!-- ⚠️ 文件名**必须**是 `<Label>.log` —— `scripts/daemons.sh` 的 status
+       按 Label 推路径去查它。两处对不上时**什么都不会红**,
+       只是 status 永远说「日志是空的」而实际它跑得好好的(2026-08-21 踩过)。 -->
+  <key>StandardOutPath</key><string>/Users/YOUR_USER/Library/Logs/growth/com.growth.asr-fallback.log</string>
+  <key>StandardErrorPath</key><string>/Users/YOUR_USER/Library/Logs/growth/com.growth.asr-fallback.log</string>
+</dict>
+</plist>

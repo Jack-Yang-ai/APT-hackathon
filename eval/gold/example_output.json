@@ -1,0 +1,16 @@
+{
+  "one_liner": "确定了交付时间,接口文档与预算各有一条待办",
+  "key_points": [
+    { "point": "交付时间定在下周五", "quote": "交付时间我们定在下周五", "line_id": 1001, "speaker_hint": "说话人1" },
+    { "point": "方案确定", "quote": "先按这个方案推进", "line_id": 1005, "speaker_hint": "说话人1" },
+    { "point": "缺失段里提到过风险", "quote": "此处缺失", "line_id": 1004, "speaker_hint": null }
+  ],
+  "commitments": [
+    { "line_id": 1002, "what": "周三前交付接口文档", "quote": "周三之前把接口文档给老王", "to_whom_text": "老王", "speaker_hint": "说话人2" }
+  ],
+  "stances": [
+    { "line_id": 1003, "stance": "对预算持保留态度", "quote": "还得再跟财务确认", "speaker_hint": "说话人3", "premise": null, "premise_line_id": null }
+  ],
+  "pendings": [],
+  "topic_keys": [{ "key": "交付时间", "line_ids": [1001] }]
+}

@@ -1,0 +1,11 @@
+prefix=/Users/runner/work/librime/librime
+exec_prefix=${prefix}
+includedir=/Users/runner/work/librime/librime/include
+libdir=/Users/runner/work/librime/librime/lib
+
+Name: Yaml-cpp
+Description: A YAML parser and emitter for C++
+Version: 0.8.0
+Requires:
+Libs: -L${libdir} -lyaml-cpp
+Cflags: -I${includedir}

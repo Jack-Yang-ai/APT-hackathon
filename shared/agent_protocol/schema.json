@@ -1,0 +1,869 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:apt:agent-contract:1",
+  "title": "APT shared Agent protocol v1",
+  "$defs": {
+    "ID": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "Revision": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    },
+    "Hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "Namespace": {
+      "type": "string",
+      "enum": [
+        "ios_content",
+        "stepx_content",
+        "input_memory",
+        "withecho",
+        "lark_meeting",
+        "manual_text"
+      ]
+    },
+    "AuthorityPhase": {
+      "type": "string",
+      "enum": [
+        "legacy",
+        "staging",
+        "backend"
+      ]
+    },
+    "ActionState": {
+      "type": "string",
+      "enum": [
+        "candidate",
+        "active",
+        "done",
+        "cancelled",
+        "rejected",
+        "merged"
+      ]
+    },
+    "Responsibility": {
+      "type": "string",
+      "enum": [
+        "commitment",
+        "request",
+        "conditional_commitment",
+        "suggestion"
+      ]
+    },
+    "PlanState": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "confirmed",
+        "superseded",
+        "cancelled"
+      ]
+    },
+    "ExecutionState": {
+      "type": "string",
+      "enum": [
+        "queued",
+        "running",
+        "succeeded",
+        "failed",
+        "cancelled",
+        "unknown"
+      ]
+    },
+    "Authority": {
+      "type": "object",
+      "properties": {
+        "domain": {
+          "const": "content"
+        },
+        "phase": {
+          "$ref": "#/$defs/AuthorityPhase"
+        },
+        "epoch": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "domain",
+        "phase",
+        "epoch"
+      ],
+      "additionalProperties": false
+    },
+    "SourceRef": {
+      "type": "object",
+      "properties": {
+        "namespace": {
+          "$ref": "#/$defs/Namespace"
+        },
+        "library_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "source_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        }
+      },
+      "required": [
+        "namespace",
+        "library_id",
+        "source_id"
+      ],
+      "additionalProperties": false
+    },
+    "SnapshotRef": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "$ref": "#/$defs/SourceRef"
+        },
+        "revision": {
+          "$ref": "#/$defs/Revision"
+        },
+        "fingerprint": {
+          "$ref": "#/$defs/Hash"
+        }
+      },
+      "required": [
+        "source",
+        "revision",
+        "fingerprint"
+      ],
+      "additionalProperties": false
+    },
+    "ErrorDetail": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        },
+        "message": {
+          "type": "string",
+          "maxLength": 1024
+        },
+        "retryable": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "retryable"
+      ],
+      "additionalProperties": false
+    },
+    "PlanRef": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/ID"
+        },
+        "revision": {
+          "$ref": "#/$defs/Revision"
+        }
+      },
+      "required": [
+        "id",
+        "revision"
+      ],
+      "additionalProperties": false
+    },
+    "ActionRef": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/ID"
+        },
+        "revision": {
+          "$ref": "#/$defs/Revision"
+        }
+      },
+      "required": [
+        "id",
+        "revision"
+      ],
+      "additionalProperties": false
+    },
+    "SourceSnapshot": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": "apt.source-snapshot/1"
+        },
+        "snapshot": {
+          "$ref": "#/$defs/SnapshotRef"
+        },
+        "authority": {
+          "$ref": "#/$defs/Authority"
+        },
+        "captured_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "semantics": {
+          "type": "string",
+          "enum": [
+            "recording",
+            "input_draft",
+            "imported_text",
+            "meeting_ai",
+            "derived"
+          ]
+        },
+        "deleted": {
+          "type": "boolean"
+        },
+        "text": {
+          "type": "string",
+          "maxLength": 64000
+        },
+        "attributes": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "required": [
+        "schema",
+        "snapshot",
+        "authority",
+        "captured_at",
+        "semantics",
+        "deleted",
+        "text",
+        "attributes"
+      ],
+      "additionalProperties": false
+    },
+    "Action": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": "apt.action/1"
+        },
+        "id": {
+          "$ref": "#/$defs/ID"
+        },
+        "revision": {
+          "$ref": "#/$defs/Revision"
+        },
+        "authority": {
+          "$ref": "#/$defs/Authority"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        },
+        "responsibility": {
+          "$ref": "#/$defs/Responsibility"
+        },
+        "state": {
+          "$ref": "#/$defs/ActionState"
+        },
+        "origin": {
+          "type": "string",
+          "enum": [
+            "user",
+            "inferred"
+          ]
+        },
+        "subject_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 240
+          },
+          "maxItems": 30
+        },
+        "due_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "dependencies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SnapshotRef"
+          },
+          "maxItems": 240
+        }
+      },
+      "required": [
+        "schema",
+        "id",
+        "revision",
+        "authority",
+        "title",
+        "responsibility",
+        "state",
+        "origin",
+        "subject_id",
+        "conditions",
+        "due_at",
+        "dependencies"
+      ],
+      "additionalProperties": false
+    },
+    "PlanStep": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/ID"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        },
+        "assignee": {
+          "type": "string",
+          "enum": [
+            "human",
+            "agent"
+          ]
+        },
+        "depends_on": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ID"
+          },
+          "maxItems": 100
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "assignee",
+        "depends_on"
+      ],
+      "additionalProperties": false
+    },
+    "Plan": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": "apt.plan/1"
+        },
+        "id": {
+          "$ref": "#/$defs/ID"
+        },
+        "revision": {
+          "$ref": "#/$defs/Revision"
+        },
+        "authority": {
+          "$ref": "#/$defs/Authority"
+        },
+        "state": {
+          "$ref": "#/$defs/PlanState"
+        },
+        "goal": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        },
+        "completion_criteria": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 240
+          },
+          "maxItems": 30
+        },
+        "constraints": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 240
+          },
+          "maxItems": 30
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PlanStep"
+          },
+          "maxItems": 100
+        },
+        "dependencies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SnapshotRef"
+          },
+          "maxItems": 240
+        }
+      },
+      "required": [
+        "schema",
+        "id",
+        "revision",
+        "authority",
+        "state",
+        "goal",
+        "completion_criteria",
+        "constraints",
+        "steps",
+        "dependencies"
+      ],
+      "additionalProperties": false
+    },
+    "Delegation": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "user_delegation"
+        },
+        "reference_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "scope": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 240
+          },
+          "maxItems": 30
+        }
+      },
+      "required": [
+        "kind",
+        "reference_id",
+        "scope"
+      ],
+      "additionalProperties": false
+    },
+    "ExecutionRequest": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": "apt.execution-request/1"
+        },
+        "request_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "authority": {
+          "$ref": "#/$defs/Authority"
+        },
+        "action": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ActionRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "plan": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PlanRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "tool": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        },
+        "account_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        },
+        "arguments": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "authorization": {
+          "$ref": "#/$defs/Delegation"
+        },
+        "dependencies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SnapshotRef"
+          },
+          "maxItems": 240
+        }
+      },
+      "required": [
+        "schema",
+        "request_id",
+        "authority",
+        "action",
+        "plan",
+        "tool",
+        "account_id",
+        "arguments",
+        "authorization",
+        "dependencies"
+      ],
+      "additionalProperties": false
+    },
+    "ExecutionReceipt": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": "apt.execution-receipt/1"
+        },
+        "request_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "receipt_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "revision": {
+          "$ref": "#/$defs/Revision"
+        },
+        "authority": {
+          "$ref": "#/$defs/Authority"
+        },
+        "state": {
+          "$ref": "#/$defs/ExecutionState"
+        },
+        "step_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ID"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "operation_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "result": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": true
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "error": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ErrorDetail"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema",
+        "request_id",
+        "receipt_id",
+        "revision",
+        "authority",
+        "state",
+        "step_id",
+        "operation_id",
+        "result",
+        "error"
+      ],
+      "additionalProperties": false
+    },
+    "CommandTarget": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "source",
+            "action",
+            "plan",
+            "feedback",
+            "attribution"
+          ]
+        },
+        "source": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SourceRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "entity_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ID"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "kind",
+        "source",
+        "entity_id"
+      ],
+      "additionalProperties": false
+    },
+    "CommandEnvelope": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": "apt.command/1"
+        },
+        "request_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "authority": {
+          "$ref": "#/$defs/Authority"
+        },
+        "target": {
+          "$ref": "#/$defs/CommandTarget"
+        },
+        "expected_revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "operation": {
+          "type": "string",
+          "enum": [
+            "create",
+            "update",
+            "complete",
+            "cancel",
+            "confirm",
+            "correct",
+            "delete",
+            "restore",
+            "assign",
+            "revoke"
+          ]
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "required": [
+        "schema",
+        "request_id",
+        "authority",
+        "target",
+        "expected_revision",
+        "operation",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "CommandReceipt": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": "apt.command-receipt/1"
+        },
+        "request_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "authority": {
+          "$ref": "#/$defs/Authority"
+        },
+        "target": {
+          "$ref": "#/$defs/CommandTarget"
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "accepted",
+            "stale",
+            "conflict",
+            "rejected",
+            "unavailable"
+          ]
+        },
+        "applied_revision": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Revision"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "error": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ErrorDetail"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema",
+        "request_id",
+        "authority",
+        "target",
+        "state",
+        "applied_revision",
+        "error"
+      ],
+      "additionalProperties": false
+    },
+    "ContentReadRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "authority",
+        "source",
+        "include_deleted"
+      ],
+      "properties": {
+        "schema": {
+          "type": "string",
+          "const": "apt.content-read/1"
+        },
+        "authority": {
+          "$ref": "#/$defs/Authority"
+        },
+        "source": {
+          "$ref": "#/$defs/SourceRef"
+        },
+        "include_deleted": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ContentQueryRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "authority",
+        "namespace",
+        "query",
+        "limit"
+      ],
+      "properties": {
+        "schema": {
+          "type": "string",
+          "const": "apt.content-query/1"
+        },
+        "authority": {
+          "$ref": "#/$defs/Authority"
+        },
+        "namespace": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Namespace"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "query": {
+          "type": "string",
+          "maxLength": 4000
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 30
+        }
+      }
+    },
+    "ContentValidateRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "authority",
+        "snapshots"
+      ],
+      "properties": {
+        "schema": {
+          "type": "string",
+          "const": "apt.content-validate/1"
+        },
+        "authority": {
+          "$ref": "#/$defs/Authority"
+        },
+        "snapshots": {
+          "type": "array",
+          "maxItems": 240,
+          "items": {
+            "$ref": "#/$defs/SnapshotRef"
+          }
+        }
+      }
+    },
+    "CommandReceiptReadRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "authority",
+        "request_id"
+      ],
+      "properties": {
+        "schema": {
+          "type": "string",
+          "const": "apt.command-receipt-read/1"
+        },
+        "authority": {
+          "$ref": "#/$defs/Authority"
+        },
+        "request_id": {
+          "$ref": "#/$defs/ID"
+        }
+      }
+    }
+  }
+}

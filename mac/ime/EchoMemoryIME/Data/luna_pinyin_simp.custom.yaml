@@ -1,0 +1,66 @@
+patch:
+  schema/dependencies: [ echo_english ]
+  # 去掉缺少笔画词典的反查（` 会吞掉之后的输入）；加入英文整词候选。
+  engine/translators:
+    - punct_translator
+    - table_translator@custom_phrase
+    - script_translator
+    - table_translator@echo_english
+  echo_english:
+    dictionary: echo_english
+    enable_completion: false
+    enable_sentence: false
+    enable_user_dict: true
+    # 0.6：未学过的英文仍让完整拼音和常用简拼（bus 不是、yes 也是、bug 不过）在前。
+    # librime 1.17.0 的用户英文词额外加 0.5，选过的 agent 等词因此能超过整拼音的基础分 1。
+    # 原先的 0.2 即使开启用户词典，学习后也仍低于整拼音；≥0.7 则会影响未学习简拼的顺序。
+    initial_quality: 0.6
+  # 只保留邮箱、网址和大写开头的英文；/符号查询会把 /usr 之类的路径变成符号。
+  # 句号在拼音后直接上屏「。」，所以不带 www. 的域名（baidu.com）需切到英文输入。
+  recognizer/patterns:
+    email: "^[A-Za-z][-_.0-9A-Za-z]*@.*$"
+    url: "^(www[.]|https?:|ftp[.:]|mailto:|file:).*$"
+    uppercase: "[A-Z][-_+.'0-9A-Za-z]*$"
+  # 去掉 Ctrl+Shift+4 切繁体；部署时仍会并入 default 预设的按键（import_preset）。
+  key_binder/bindings: []
+  # 中文标点与 macOS 自带拼音一致（取自系统 Pinyin.keylayout）：\ 出「、」，/ 出「/」，
+  # [ ] 出【】，{ } 出「」，` 出「·」，~ 出「～」，$ 出「¥」，| 出「｜」。全部直接上屏，
+  # 不弹选单（选单会把后面的数字当成选词：1~3、100%2）。
+  # 整个 punctuator 替换（不再 import_preset: symbols），否则部署时预设会与本表合并冲突。
+  # /xx 符号查询已随识别规则去掉，所以不需要 symbols 表。
+  punctuator:
+    full_shape:
+      __include: symbols:/punctuator/full_shape
+    half_shape:
+      ',' : { commit: ， }
+      '.' : { commit: 。 }
+      '<' : { commit: 《 }
+      '>' : { commit: 》 }
+      '/' : { commit: '/' }
+      '?' : { commit: ？ }
+      ';' : { commit: ； }
+      ':' : { commit: ： }
+      '''' : { pair: [ '‘', '’' ] }
+      '"' : { pair: [ '“', '”' ] }
+      '\' : { commit: 、 }
+      '|' : { commit: ｜ }
+      '`' : { commit: · }
+      '~' : { commit: ～ }
+      '!' : { commit: ！ }
+      '@' : '@'
+      '#' : '#'
+      '%' : '%'
+      '$' : { commit: ¥ }
+      '^' : { commit: …… }
+      '&' : '&'
+      '*' : '*'
+      '(' : （
+      ')' : ）
+      '-' : '-'
+      '_' : ——
+      '+' : '+'
+      '=' : '='
+      '[' : { commit: 【 }
+      ']' : { commit: 】 }
+      '{' : { commit: 「 }
+      '}' : { commit: 」 }

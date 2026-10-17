@@ -1,0 +1,11 @@
+# 主 Python 的依赖,版本钉死(M0-1c)。
+# 改版本 = 改这里,别在别处 pip install 完就算数。
+numpy==2.0.2           # recall 向量余弦;mac/speaker_id.py mac/sed_gate.py mac/enroll*.py
+requests==2.32.5       # mac/asr_stepfun.py 调转写
+httpx==0.28.1          # shared/model_router.py 调 LLM
+
+# 不在这里的重依赖:torch / librosa / soundfile。
+# 它们只装在 ~/Desktop/录音文件/_pipeline/.venv(见 CLAUDE.md §四·补),
+# 主 Python 故意不装;需要它们的步骤用 subprocess 调那个 venv。
+# 所以 `pip install -r requirements.txt` 装出来的环境跑不了 mac/vad_gate.py 这类重依赖脚本,
+# 这是设计如此,不是漏了。

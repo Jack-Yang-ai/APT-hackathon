@@ -1,0 +1,27 @@
+{
+  "schema": "growth.extract_gold/1",
+  "session_id": "demo-2026-08-08-1400",
+  "annotated_by": "example",
+  "annotated_at": "2026-08-08T20:00:00+08:00",
+  "note": "样例金标,用来说明格式;真金标见 M0-13a。这一场刻意造了四种情况:正常行、归属未定的行、占位行、以及一条金标里有而系统会漏掉的承诺。",
+
+  "lines": [
+    { "line_id": 1001, "text": "这个版本的交付时间我们定在下周五", "is_gap": 0, "person_id": 3, "cluster_tag": "说话人1" },
+    { "line_id": 1002, "text": "我这边周三之前把接口文档给老王", "is_gap": 0, "person_id": 7, "cluster_tag": "说话人2" },
+    { "line_id": 1003, "text": "预算这块我还得再跟财务确认一下", "is_gap": 0, "person_id": null, "cluster_tag": "说话人3" },
+    { "line_id": 1004, "text": "〔此处缺失 30 秒〕", "is_gap": 1, "person_id": null, "cluster_tag": null },
+    { "line_id": 1005, "text": "那就先按这个方案推进", "is_gap": 0, "person_id": 3, "cluster_tag": "说话人1" }
+  ],
+
+  "gold": {
+    "one_liner": "确定了交付时间,接口文档与预算各有一条待办",
+    "key_points": [
+      { "line_id": 1001, "point": "交付时间定在下周五" },
+      { "line_id": 1005, "point": "方案确定,按此推进" }
+    ],
+    "commitments": [
+      { "line_id": 1002, "what": "周三前交付接口文档", "to_whom_text": "老王" },
+      { "line_id": 1003, "what": "跟财务确认预算", "to_whom_text": null }
+    ]
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "_doc": [
+    "判决层清单 —— 哪些文件里的数值常量算「标准」,要登记进 manifest。",
+    "",
+    "判据(2026-08-26 用户拍板):一个数是标准,当且仅当它决定下面四件事之一 ——",
+    "  ① 什么算过 / 什么算红      (达标线、门禁阈值)",
+    "  ② 什么被丢掉 / 挂起        (校验阈值)",
+    "  ③ 花多少钱 / 跑多久        (token 上限、重试、轮询)",
+    "  ④ 产出长什么样             (切分粒度、条数上限、区间)",
+    "不算标准的:缓冲区大小、UI 尺寸、协议常量、枚举闭集(那些另有闸守着)。",
+    "",
+    "闸的默认(同日拍板):**分层** —— 下面这些路径里新加数值常量而没登记 ⇒ 红;",
+    "其余路径不管。理由:全登记要先给 ~280 个非标准常量打豁免标,一次性工量压垮日常改动;",
+    "而只管白名单则是 CLAUDE.md 自己警告过的「白名单为空地放行 = 对撞不存在」。",
+    "",
+    "⚠️ 这份清单是**唯一出处**。要收/要放一个目录,只改这里,别在扫描器里写死。"
+  ],
+  "judged": [
+    "shared/model_router.py",
+    "shared/text_normalize.py",
+    "shared/memory_keys.py",
+    "shared/near_duplicate.py",
+    "worker/extract.py",
+    "worker/extract_two_stage.py",
+    "mac/extract_daemon.py",
+    "mac/voiceprint_judge.py",
+    "mac/speaker_id.py",
+    "mac/core_gate.py",
+    "mac/sed_gate.py",
+    "mac/broadcast_gate.py",
+    "mac/vad_gate.py",
+    "mac/enroll_gates.py",
+    "mac/silero_vad.py",
+    "eval/extract_quality.py",
+    "eval/score_m2_exams.py",
+    "eval/score_m3_exams.py",
+    "ios/GrowthApp/Extraction",
+    "ios/GrowthApp/Cards",
+    "ios/GrowthApp/Discovery",
+    "ios/GrowthApp/Attribution",
+    "ios/GrowthApp/Ask",
+    "ios/GrowthApp/Voiceprint"
+  ],
+  "_borderline": {
+    "_note": "边界情况:现在不收,收进来只要挪进 judged 即可。挪之前先想清楚它决定的是不是上面四件事之一。",
+    "ios/GrowthApp/Upload": "分片与重试影响成本(判据③),但也混着大量协议常量",
+    "ios/GrowthApp/Recording": "分段时长影响产出形状(判据④),但也混着采样率/缓冲区"
+  },
+  "exclude": {
+    "_note": "判决层里**显式豁免**的文件。每条必须写理由 —— 豁免不写理由,下一个人无法判断它还成不成立(仓规 6)。",
+    "ios/GrowthApp/Voiceprint/MelFrontend.swift": "mel 前端规格(fMin/fMax/hopLength/nMels…)由 ReDimNet 模型架构定死,改了就不是同一个模型。按判据属于「协议常量」,不是「谁定的」能动的数。",
+    "ios/GrowthApp/Voiceprint/RedimnetBody.swift": "同上:模型结构参数,不是阈值。"
+  }
+}

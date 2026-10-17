@@ -1,0 +1,882 @@
+{
+ "registry": {
+  "ios/GrowthApp/Ask/AskRetrieval.swift::maxTerms": {
+   "who": "measured",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Ask/AskRetrieval.swift::minTermLength": {
+   "who": "measured",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Ask/AskRetrieval.swift::topN": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Attribution/MixedLineDetector.swift::defaultThresholdMs": {
+   "who": "measured",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Cards/CardBudget.swift::initialValue": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Cards/CardBudget.swift::lowerBelow": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Cards/CardBudget.swift::maxValue": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Cards/CardBudget.swift::minSample": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Cards/CardBudget.swift::minValue": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Cards/CardBudget.swift::pauseAfterIdleDays": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Cards/CardBudget.swift::raiseAt": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Cards/CardBudget.swift::raiseStreakNeeded": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Cards/CardProducer.swift::wrongQuestionDisableAt": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Cards/CardPush.swift::quietFrom": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Cards/CardPush.swift::quietUntil": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Cards/CardTrigger.swift::principleMatterSpread": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Discovery/DiscoveryKind.swift::globalPerDay": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Discovery/DiscoveryKind.swift::minAnchorQuotes": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Discovery/DiscoveryKind.swift::minQuotes": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Discovery/DiscoveryKind.swift::perMatterPerWeek": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Discovery/DiscoveryKind.swift::perPersonPerWeek": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Discovery/DiscoveryKind.swift::sinkAfterDays": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Discovery/DiscoveryKind.swift::staleAfterDays": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Discovery/ObservationKind.swift::blindSpotCurfewHour": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Extraction/ExtractPrompt.swift::maxTokens": {
+   "who": "measured",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Extraction/ExtractionRunner.swift::chunkSize": {
+   "who": "measured",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Extraction/ProgressAttributionInput.swift::degradedCompareCount": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Extraction/ProgressAttributionInput.swift::inputTokenBudget": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Extraction/ProgressAttributionInput.swift::timelineWindow": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Extraction/ProgressTiering.swift::lexicalThreshold": {
+   "who": "measured",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Extraction/ProgressTiering.swift::peopleThreshold": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Voiceprint/RegistrySnapshot.swift::inserted": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Voiceprint/RemoteSnapshotStore.swift::intervalSeconds": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Voiceprint/SpeakerClipPolicy.swift::maxPerSpeaker": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Voiceprint/SpeakerClipPolicy.swift::minSpeechRatio": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Voiceprint/SpeakerCut.swift::minCandidates": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Voiceprint/SpeakerCut.swift::minPieceMs": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Voiceprint/SpeakerCut.swift::plateauTolerance": {
+   "who": "measured",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Voiceprint/SpeakerCut.swift::sep": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Voiceprint/SpeakerCut.swift::separationMargin": {
+   "who": "measured",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Voiceprint/SpeakerCut.swift::stepMs": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Voiceprint/SpeakerCut.swift::windowMs": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Voiceprint/SpeakerMatch.swift::legacyAbsoluteThreshold": {
+   "who": "measured",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Voiceprint/SpeakerMatch.swift::minSegments": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Voiceprint/SpeakerMatch.swift::tau": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Voiceprint/SpeakerSegments.swift::maxLinesPerCluster": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Voiceprint/SpeakerSegments.swift::targetSeconds": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Voiceprint/SpeechGate.swift::minSpeechRatio": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Voiceprint/VoiceprintChain.swift::dot": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Voiceprint/VoiceprintChain.swift::matched": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Voiceprint/VoiceprintEnroll.swift::enrolled": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Voiceprint/VoiceprintRegistry.swift::hash": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Voiceprint/VoiceprintRegistry.swift::recommendedTemplates": {
+   "who": "measured",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Voiceprint/VoiceprintSeed.swift::created": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/broadcast_gate.py::_LEX_CLUSTER_MIN": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/broadcast_gate.py::_LINE_BATCH": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/broadcast_gate.py::_SAMPLE_PER_CLUSTER": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/core_gate.py::MARGIN": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/core_gate.py::MIN_SEC": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/core_gate.py::STRICT_MIN": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/enroll_gates.py::HF_CUTOFF_HZ": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/enroll_gates.py::HF_RATIO_MIN": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/extract_daemon.py::CLAIM_TTL_SEC": {
+   "who": "measured",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/extract_daemon.py::HEARTBEAT_SEC": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/extract_daemon.py::MAX_SILENCE_SEC": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/extract_daemon.py::POLL_SEC": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/sed_gate.py::CHUNK_SEC": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/sed_gate.py::MEDIA_P": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/sed_gate.py::MERGE_GAP": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/sed_gate.py::MIN_DUR": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/sed_gate.py::SED_SR": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/sed_gate.py::SPEECH_MAX": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/silero_vad.py::CONTEXT": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/silero_vad.py::FRAME": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/silero_vad.py::MIN_SPEECH_RATIO": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/silero_vad.py::SPEECH_THRESHOLD": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/silero_vad.py::SR": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/speaker_id.py::_BYTES_PER_SEC": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/speaker_id.py::_MATCH_THRESHOLD": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/speaker_id.py::_MAX_SPEAKER_SEC": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/speaker_id.py::_MIN_SPEAKER_SEC": {
+   "who": "user",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/vad_gate.py::VAD_SR": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/voiceprint_judge.py::CLUSTER_LINK": {
+   "who": "measured",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/voiceprint_judge.py::MIN_SEGMENTS": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/voiceprint_judge.py::MIN_VOTE_RATIO": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/voiceprint_judge.py::TAU": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "shared/model_router.py::PEAK_MULTIPLIER": {
+   "who": "ai",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "worker/extract.py::MAX_TOKENS": {
+   "who": "measured",
+   "decides": "成本",
+   "evidence": "§4.2 实测 8000 会被 thinking 吃光返回空正文",
+   "note": "🔴 但 M2-J6 实测:2232 行那场输出 19,998 **顶到天花板被截断、钱白花**;37 场里 10 场 ≥1500 行",
+   "verdict": "pending"
+  },
+  "worker/extract_two_stage.py::MIN_CHARS": {
+   "who": "ai",
+   "decides": "形状",
+   "evidence": "无。注释只写「防碎片」",
+   "note": "实测语料每行约 16 字 ⇒ 这条约等于「每块至少 5 行」,而没人验过 5 行是不是对的粒度",
+   "verdict": "pending"
+  },
+  "worker/extract_two_stage.py::S1_MAX_TOKENS": {
+   "who": "measured",
+   "decides": "成本",
+   "evidence": "thinking 占输出 76–86% 实测(2026-08-24)",
+   "note": "",
+   "verdict": "pending"
+  },
+  "worker/extract_two_stage.py::S2_MAX_TOKENS": {
+   "who": "measured",
+   "decides": "成本",
+   "evidence": "同 S1",
+   "note": "",
+   "verdict": "pending"
+  },
+  "worker/extract_two_stage.py::TARGET_CHARS": {
+   "who": "ai",
+   "decides": "形状",
+   "evidence": "无。docs/evidence/segmentation/final_spec.py 头一句「唯一的数是 2000(案卷 6000÷3)」",
+   "note": "🔴 上方那行「参数都有实测出处」是一句**总括声明**,罩着 5 个常量,而这一条自己没有出处。它决定整条抽取线的切分粒度。",
+   "verdict": "pending"
+  },
+  "TASKS.md::M2-0a①": {
+   "who": "user",
+   "decides": "过红",
+   "evidence": "TASKS.md M2-0a 定稿 2026-08-19",
+   "note": "区间不是下限 —— 高于上界=提名过于保守,而漏提在界面上什么都不会发生",
+   "verdict": "pending"
+  },
+  "TASKS.md::M2-0a②": {
+   "who": "user",
+   "decides": "过红",
+   "evidence": "TASKS.md M2-0a 定稿",
+   "note": "静默档是唯一不经人眼的路径",
+   "verdict": "pending"
+  },
+  "TASKS.md::M2-0a③": {
+   "who": "user",
+   "decides": "过红",
+   "evidence": "TASKS.md M2-0a 定稿",
+   "note": "双评审不是为了更准,是让「尺子本身不可信」暴露出来",
+   "verdict": "pending"
+  },
+  "TASKS.md::M2-0a④": {
+   "who": "user",
+   "decides": "过红",
+   "evidence": "TASKS.md M2-0a 定稿 · CI 已达标",
+   "note": "",
+   "verdict": "pending"
+  },
+  "TASKS.md::M2-0a⑤": {
+   "who": "user",
+   "decides": "成本",
+   "evidence": "TASKS.md M2-0a 定稿 · §4.5.1 硬上限",
+   "note": "同时是 test_input_budget.py 的对撞对象",
+   "verdict": "pending"
+  },
+  "TASKS.md::M2-0a⑥": {
+   "who": "user",
+   "decides": "过红",
+   "evidence": "TASKS.md M2-0a 定稿 · CI 已达标",
+   "note": "",
+   "verdict": "pending"
+  },
+  "TASKS.md::M3-0a①": {
+   "who": "user",
+   "decides": "过红",
+   "evidence": "TASKS.md M3-0a 定稿 2026-08-25",
+   "note": "达标线由 M2-0a 给,本节只加严重违规两类 0 例",
+   "verdict": "pending"
+  },
+  "TASKS.md::M3-0a②": {
+   "who": "user",
+   "decides": "过红",
+   "evidence": "TASKS.md M3-0a 定稿",
+   "note": "达不到即判「在产出正确的废话」,不上线",
+   "verdict": "pending"
+  },
+  "TASKS.md::M3-0a③": {
+   "who": "user",
+   "decides": "过红",
+   "evidence": "TASKS.md M3-0a 定稿",
+   "note": "一行不过就是不过",
+   "verdict": "pending"
+  },
+  "TASKS.md::M3-0a④": {
+   "who": "user",
+   "decides": "过红",
+   "evidence": "TASKS.md M3-0a 定稿",
+   "note": "性格标签 / 能力评价 / 动机推测,抽 10 条 0 违规",
+   "verdict": "pending"
+  },
+  "eval/extract_quality.py::THRESHOLDS.first_pass_rate": {
+   "who": "ai",
+   "decides": "过红",
+   "evidence": "未定 —— 等 M0-13 实测后回填",
+   "note": "值是 None,门禁恒不通过",
+   "verdict": "pending"
+  },
+  "eval/extract_quality.py::THRESHOLDS.pending_rate": {
+   "who": "ai",
+   "decides": "过红",
+   "evidence": "未定",
+   "note": "地板由分人质量定,不是抽取的锅",
+   "verdict": "pending"
+  },
+  "eval/extract_quality.py::THRESHOLDS.commitment_recall": {
+   "who": "ai",
+   "decides": "过红",
+   "evidence": "未定 —— 要金标当分母,而金标一份都没有",
+   "note": "",
+   "verdict": "pending"
+  },
+  "eval/extract_quality.py::THRESHOLDS.commitment_precision": {
+   "who": "ai",
+   "decides": "过红",
+   "evidence": "未定 —— 要金标",
+   "note": "",
+   "verdict": "pending"
+  },
+  "eval/extract_quality.py::THRESHOLDS.key_point_anchor_rate": {
+   "who": "ai",
+   "decides": "过红",
+   "evidence": "未定",
+   "note": "🔴 这一条**不需要金标**就能算,本可以先定线先跑,却跟着其他五条一起空着",
+   "verdict": "pending"
+  },
+  "eval/extract_quality.py::THRESHOLDS.miss_rate": {
+   "who": "ai",
+   "decides": "过红",
+   "evidence": "未定 —— 要金标",
+   "note": "",
+   "verdict": "pending"
+  },
+  "shared/model_router.py::_PRICES.step-3.7-flash": {
+   "who": "ai",
+   "decides": "成本",
+   "evidence": "官方标价;真实成本 0(免费额度)",
+   "note": "🔴 注释写着「不作决策依据」,而 run_ab_stages.py:235 拿它算了成本 —— 于是「C 臂比 A 便宜 11 倍」这个结论方向是反的",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Voiceprint/SpeakerMatch.swift::tauEpsilon": {
+   "who": "measured",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/voiceprint_judge.py::TAU_EPSILON": {
+   "who": "measured",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/voiceprint_judge.py::REVIEW_K": {
+   "who": "user",
+   "decides": "",
+   "evidence": "",
+   "note": "",
+   "verdict": "pending"
+  },
+  "mac/voiceprint_judge.py::TNORM_MIN_COHORT": {
+   "who": "ai",
+   "decides": "冒充集少于多少条就拒绝算 T-norm",
+   "evidence": "取 10 是为了让 μ/σ 算得出来。⚠️ 起点值,没有标定。半套归一化比不归一化更坏(尺度变了而 τ 没变),所以选择抛而不是退回裸余弦。",
+   "note": "换 T-norm 时引入(M2-认15)。生产 257 条模板的 σ 实测在 0.052–0.132 之间。",
+   "verdict": "pending"
+  },
+  "mac/voiceprint_judge.py::TNORM_TOPK": {
+   "who": "ai",
+   "decides": "T-norm 拿多少个冒充质心给每条模板算 μ/σ",
+   "evidence": "冒充集共 41 条,K=40 等于全用。⚠️ 没有单独标定 —— 标准做法是 top-K 取几百,而我们只有 41。",
+   "note": "换 T-norm 时引入(M2-认15)。生产 257 条模板的 σ 实测在 0.052–0.132 之间。",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Ask/RelativeDates.swift::firstWeekday": {
+   "who": "ai",
+   "decides": "形状",
+   "evidence": "中文习惯周一为一周之首。写死而不跟随系统区域:跟随的话同一句「上周」在不同手机上差一天,而两边都不报错。",
+   "note": "M2-检2 §1.2。RelativeDatesTests.testSundayBelongsToTheWeekThatStartedOnMonday 钉着它。",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Ask/RelativeDates.swift::maxSpanDays": {
+   "who": "ai",
+   "decides": "形状",
+   "evidence": "没实测,拍的。太宽的区间会让几乎所有场次都算「在范围内」,等于没加权。",
+   "note": "M2-检2 §1.2。包里那份词表任何组合都撞不到它(最宽 上周+下周 = 21 天),今天只防将来加词。",
+   "verdict": "pending"
+  },
+  "shared/near_duplicate.py::LINE_GRAM": {
+   "who": "measured",
+   "decides": "丢挂",
+   "evidence": "转写行(短句)上量过:2 字组能把该折的 0.60/0.80 与不该折的 0.30/0.25 分开,4 字组分不开。条目文本上未量。",
+   "note": "M2-检2 §1.4。**借自行级去重(NearDuplicate.swift),在条目文本上没有量过。** 量法 eval/near_dup_label.py,142 对已抽好、标注待人工;已知缺陷见 TASKS M2-检3(长共享前缀里的反义句会被折成一条)。",
+   "verdict": "pending"
+  },
+  "shared/near_duplicate.py::LINE_THRESHOLD": {
+   "who": "measured",
+   "decides": "丢挂",
+   "evidence": "同上,0.55 两边各留 0.25 余量 —— 那是**行级**的余量,条目级未量。",
+   "note": "M2-检2 §1.4。**借自行级去重(NearDuplicate.swift),在条目文本上没有量过。** 量法 eval/near_dup_label.py,142 对已抽好、标注待人工;已知缺陷见 TASKS M2-检3(长共享前缀里的反义句会被折成一条)。",
+   "verdict": "pending"
+  },
+  "mac/voiceprint_judge.py::SELF_ID": {
+   "who": "user",
+   "decides": "身份键",
+   "evidence": "SpeakerNaming.mePersonID=-1;mac/test_voiceprint_contract.py跨语言对撞",
+   "note": "协议常量,不代表得分阈值",
+   "verdict": "pending"
+  },
+  "mac/voiceprint_judge.py::SELF_ACCEPT_Z": {
+   "who": "measured",
+   "decides": "自动认我",
+   "evidence": "docs/evidence/self-only-voiceprint/result_prod_2026-10-12.txt:本人10簇最低5.283,非本人22簇最高5.048,取中点5.17",
+   "note": "生产T-norm,仅>=3段簇;样本较小,待真机确认反馈重标",
+   "verdict": "pending"
+  },
+  "mac/voiceprint_judge.py::SELF_ASK_Z": {
+   "who": "ai",
+   "decides": "是否向用户确认",
+   "evidence": "生产T-norm灰区起点4.8;离线22个非本人簇中1个落入灰区",
+   "note": "代定,只有候选提示,不自动写归属",
+   "verdict": "pending"
+  },
+  "mac/voiceprint_judge.py::SELF_MIN_SEGMENTS": {
+   "who": "measured",
+   "decides": "能否自动认我",
+   "evidence": "同一定阈记录只覆盖>=3段簇;非本人单段最高5.810超过自动线5.17",
+   "note": "不足3段即使高分也只问用户",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Ask/AskRetrieval.swift::characterBudget": {
+   "who": "ai",
+   "decides": "成本",
+   "evidence": "M5-2 首版问答输入的工程上限；非相关性或语义判据。见 docs/intents/M5-2/spec.md。",
+   "note": "控制单轮输入，长句出处显示实际节选；尚未声称真实语料召回率通过。",
+   "verdict": "pending"
+  },
+  "ios/GrowthApp/Ask/AskRetrieval.swift::lineCharacterLimit": {
+   "who": "ai",
+   "decides": "成本",
+   "evidence": "M5-2 首版问答输入的工程上限；非相关性或语义判据。见 docs/intents/M5-2/spec.md。",
+   "note": "控制单轮输入，长句出处显示实际节选；尚未声称真实语料召回率通过。",
+   "verdict": "pending"
+  }
+ },
+ "_doc": "每条标准的「谁定的 / 出处 / 你的判定」。**不存阈值的值** —— 值只在代码里,存两份就是铁律 4。闸见 eval/checks/test_standards.py。",
+ "_retired": {
+  "worker/extract_two_stage.py::GROUP_GAP_SEC": {
+   "who": "measured",
+   "decides": "形状",
+   "evidence": "1100 段 717s 断档实测",
+   "note": "2026-10-13 用户拍板：时间间隔只作证据，不能强制断事。原实测间隔不等于语义分界；见 docs/intents/M5-2/intent.md。",
+   "verdict": "kill"
+  }
+ }
+}

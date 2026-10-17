@@ -1,0 +1,21 @@
+# Rime schema
+# encoding: utf-8
+#
+# 只用于部署时编译 echo_english 词典，不出现在方案列表。
+# 由 luna_pinyin_simp 的 table_translator@echo_english 引用。
+
+schema:
+  schema_id: echo_english
+  name: Echo English
+  version: "1"
+
+engine:
+  translators:
+    - table_translator
+
+speller:
+  alphabet: zyxwvutsrqponmlkjihgfedcba
+  delimiter: " '"
+
+translator:
+  dictionary: echo_english

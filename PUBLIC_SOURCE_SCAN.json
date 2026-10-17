@@ -1,0 +1,5 @@
+{
+  "source_commit": "d5d372914f74349caf58937c1188c3e02c056547",
+  "findings": [],
+  "scope": "credential patterns, identity markers, explicit private file exclusion and transformation audit; not proof against all unknown private material"
+}

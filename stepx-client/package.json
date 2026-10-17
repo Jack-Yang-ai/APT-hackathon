@@ -1,0 +1,7 @@
+{
+  "name": "apt-stepx-source",
+  "private": true,
+  "type": "module",
+  "scripts": { "test": "node --test test/*.test.mjs" },
+  "devDependencies": { "fake-indexeddb": "6.2.5" }
+}

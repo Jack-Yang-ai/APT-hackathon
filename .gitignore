@@ -1,0 +1,86 @@
+# 私密 / 派生 / 缓存——不进版本库
+__pycache__/
+*.pyc
+.venv/
+.venv-*/
+.DS_Store
+
+# secrets 在 ~/.config/growth-agent/secrets.env(仓外);任何误放仓内的也忽略
+*.env
+!.env.example
+secrets*
+
+# 用户数据(录音、转写、派生产物)——本地私有
+/data/
+/logs/
+
+# 声纹底库(生物特征隐私,绝不进库)
+#
+# ⚠️ **这两行只是保护,不是路径的定义** —— 真正写在哪由代码说了算,
+# 而代码可以从这两行旁边绕过去(2026-08-18 实测到两条绕过去的,都是
+# 旧仓布局 `ingest/meeting/…` 搬过来之后失效的)。
+# 由 `shared/test_voiceprint_paths.py` 逐条对撞,已进 CI。
+mac/voiceprints/
+mac/voiceprints_v2/
+
+# 旧仓布局的残留:代码已经不再往这儿写(2026-08-18),但别人的 checkout 上
+# 可能还留着 2026-08-10 之前落下的东西 —— 兜一道,免得被 `git add -A` 卷走。
+/ingest/
+
+# Worker:依赖与本地密钥。package-lock.json 要进库(依赖锁定,同 M0-1c)
+worker/node_modules/
+worker/.dev.vars
+worker/.wrangler/
+
+# iOS:xcodegen 生成物(源码与 project.yml 进库,工程文件重新生成)
+ios/build*/
+ios/*.xcodeproj
+ios/DerivedData*/
+# 🔴 仓库根也要挡。2026-08-19 实测:从仓库根跑
+# `xcodebuild -project ios/... -derivedDataPath DerivedData`,产物落的是**根目录**这份,
+# 而人在往 `ios/DerivedData` 里装包 —— 我因此连装三次旧包,以为代码没生效。
+# 两个 DerivedData 并存就是「一件事两个出处」的又一例(1.2 GB,而且是未跟踪的
+# ⇒ 正好躺在 `git add -A` 的射程里,那是事故一的形状)。
+DerivedData*/
+
+# 评测结果:每次重跑就全变,且含真实人名与原话。要看就重跑
+eval/results_*.jsonl
+eval/questions_*.jsonl
+
+# 断言脚本的 schema fixture:每次跑 iOS 测试重新生成,不进版本库
+eval/checks/fixtures/
+# ⚠️ 别把 eval/checks/golden/ 也挡掉。两者只差一个词,性质相反:
+#   fixtures/ = 生成的中间产物,丢了重跑就有
+#   golden/   = **契约本身**,Python 与 Swift 两侧测试共读它来对齐口径。
+#               它是生成的,但必须进版本库 —— 不进的话 CI 里 Swift 侧没东西可比,
+#               而"没东西可比"表现为测试**绿着跳过**,不是红。
+
+# 编排器的中间产物(含真实原话),重跑即生成
+.orchestration/
+
+# 走查实拍里是**真实对话内容**(真人名、真业务),这个仓至今一条都没进过版本库。
+# 进不进是用户的决定,不是顺手做掉的事 —— 所以先挡住,而不是裸放在工作区
+# 等着被 `git add -A` 卷走(仓里第一起事故就是这个形状)。
+# 要收进去:git add -f docs/evidence/m2-走1/*.png
+docs/evidence/m2-走1/*.png
+
+# 2026-08-19:两处「保护路径 ≠ 真实写入路径」(铁律 4 那张表里的第一行形状)。
+# · wrangler 在**仓根**也会写 .wrangler/,而上面只护了 worker/.wrangler/
+# · 抽取试点的产出是**真实转写内容**,与录音同级,绝不进版本库
+.wrangler/
+eval/extract_pilot/out/
+
+# 审核台是生成物(python3 -m eval.standards.render)，不进版本库
+eval/standards/console.out.html
+
+# 要收进去:git add -f docs/evidence/m2-审29a/*.png
+docs/evidence/m2-审29a/*.png
+
+# Agent-local history and nested checkouts must not become current source inputs.
+.context/
+.workbuddy/
+.claude/worktrees/
+
+# Also ignore dependency directories linked into isolated worktrees.
+/worker/node_modules
+/stepx-client/node_modules/

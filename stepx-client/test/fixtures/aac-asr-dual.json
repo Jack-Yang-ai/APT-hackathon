@@ -1,0 +1,1577 @@
+{
+  "source": "Two public synthetic voices: Tingting and Daniel, alternating, fixed low-level Gaussian noise; no private recordings",
+  "sourceSeconds": 45.4566875,
+  "cases": [
+    {
+      "format": "wav",
+      "bytes": 1454658,
+      "result": [
+        {
+          "text": "我们今天讨论录音文件，请你星期五下午3点前提交预算方案，金额3600元。我负责检查手机录音和历史数据，旧文件不要删除。I will send the budget on Friday before 3 PM. The total is 3600 yuan. Please keep the original recordings and check the upload receipt. 好的，新的录音按照10分钟分片，请测试两位说话人能否区分，数字和日期是否正确，并确认结束和重开后仍能播放。Agreed. I will test the smaller audio file and compare the transcript with the original. The recording must continue while the screen is locked.",
+          "utterances": [
+            {
+              "text": "我们今天讨论录音文件，请你星期五下午3点前提交预算方案，金额3600元。我负责检查手机录音和历史数据，旧文件不要删除。",
+              "start_time": 13,
+              "end_time": 13633,
+              "speaker": {
+                "id": "speaker_0"
+              },
+              "words": [
+                {
+                  "text": "我",
+                  "end_time": 80
+                },
+                {
+                  "text": "们",
+                  "start_time": 80,
+                  "end_time": 240
+                },
+                {
+                  "text": "今",
+                  "start_time": 240,
+                  "end_time": 480
+                },
+                {
+                  "text": "天",
+                  "start_time": 480,
+                  "end_time": 720
+                },
+                {
+                  "text": "讨",
+                  "start_time": 720,
+                  "end_time": 960
+                },
+                {
+                  "text": "论",
+                  "start_time": 960,
+                  "end_time": 1200
+                },
+                {
+                  "text": "录",
+                  "start_time": 1200,
+                  "end_time": 1360
+                },
+                {
+                  "text": "音",
+                  "start_time": 1360,
+                  "end_time": 1520
+                },
+                {
+                  "text": "文",
+                  "start_time": 1520,
+                  "end_time": 1760
+                },
+                {
+                  "text": "件，",
+                  "start_time": 1760,
+                  "end_time": 2080
+                },
+                {
+                  "text": "请",
+                  "start_time": 2320,
+                  "end_time": 2560
+                },
+                {
+                  "text": "你",
+                  "start_time": 2560,
+                  "end_time": 2720
+                },
+                {
+                  "text": "星",
+                  "start_time": 2720,
+                  "end_time": 3040
+                },
+                {
+                  "text": "期",
+                  "start_time": 3040,
+                  "end_time": 3200
+                },
+                {
+                  "text": "五",
+                  "start_time": 3200,
+                  "end_time": 3360
+                },
+                {
+                  "text": "下",
+                  "start_time": 3360,
+                  "end_time": 3680
+                },
+                {
+                  "text": "午",
+                  "start_time": 3680,
+                  "end_time": 3840
+                },
+                {
+                  "text": "3",
+                  "start_time": 3840,
+                  "end_time": 4080
+                },
+                {
+                  "text": "点",
+                  "start_time": 4080,
+                  "end_time": 4320
+                },
+                {
+                  "text": "前",
+                  "start_time": 4320,
+                  "end_time": 4640
+                },
+                {
+                  "text": "提",
+                  "start_time": 4640,
+                  "end_time": 4880
+                },
+                {
+                  "text": "交",
+                  "start_time": 4880,
+                  "end_time": 5120
+                },
+                {
+                  "text": "预",
+                  "start_time": 5120,
+                  "end_time": 5360
+                },
+                {
+                  "text": "算",
+                  "start_time": 5360,
+                  "end_time": 5600
+                },
+                {
+                  "text": "方",
+                  "start_time": 5600,
+                  "end_time": 5840
+                },
+                {
+                  "text": "案，",
+                  "start_time": 5920,
+                  "end_time": 6160
+                },
+                {
+                  "text": "金",
+                  "start_time": 6480,
+                  "end_time": 6640
+                },
+                {
+                  "text": "额",
+                  "start_time": 6640,
+                  "end_time": 6880
+                },
+                {
+                  "text": "3600",
+                  "start_time": 6880,
+                  "end_time": 8240
+                },
+                {
+                  "text": "元。",
+                  "start_time": 8240,
+                  "end_time": 8240
+                },
+                {
+                  "text": "我",
+                  "start_time": 8480,
+                  "end_time": 8560
+                },
+                {
+                  "text": "负",
+                  "start_time": 8560,
+                  "end_time": 8800
+                },
+                {
+                  "text": "责",
+                  "start_time": 8800,
+                  "end_time": 9040
+                },
+                {
+                  "text": "检",
+                  "start_time": 9040,
+                  "end_time": 9280
+                },
+                {
+                  "text": "查",
+                  "start_time": 9280,
+                  "end_time": 9600
+                },
+                {
+                  "text": "手",
+                  "start_time": 9600,
+                  "end_time": 9840
+                },
+                {
+                  "text": "机",
+                  "start_time": 9840,
+                  "end_time": 10080
+                },
+                {
+                  "text": "录",
+                  "start_time": 10080,
+                  "end_time": 10240
+                },
+                {
+                  "text": "音",
+                  "start_time": 10240,
+                  "end_time": 10480
+                },
+                {
+                  "text": "和",
+                  "start_time": 10480,
+                  "end_time": 10720
+                },
+                {
+                  "text": "历",
+                  "start_time": 10720,
+                  "end_time": 10880
+                },
+                {
+                  "text": "史",
+                  "start_time": 10880,
+                  "end_time": 11120
+                },
+                {
+                  "text": "数",
+                  "start_time": 11120,
+                  "end_time": 11280
+                },
+                {
+                  "text": "据，",
+                  "start_time": 11280,
+                  "end_time": 11600
+                },
+                {
+                  "text": "旧",
+                  "start_time": 11840,
+                  "end_time": 12000
+                },
+                {
+                  "text": "文",
+                  "start_time": 12000,
+                  "end_time": 12240
+                },
+                {
+                  "text": "件",
+                  "start_time": 12240,
+                  "end_time": 12480
+                },
+                {
+                  "text": "不",
+                  "start_time": 12480,
+                  "end_time": 12720
+                },
+                {
+                  "text": "要",
+                  "start_time": 12720,
+                  "end_time": 12880
+                },
+                {
+                  "text": "删",
+                  "start_time": 12880,
+                  "end_time": 13120
+                },
+                {
+                  "text": "除。",
+                  "start_time": 13120,
+                  "end_time": 13520
+                }
+              ]
+            },
+            {
+              "text": "I will send the budget on Friday before 3 PM. The total is 3600 yuan. Please keep the original recordings and check the upload receipt. ",
+              "start_time": 14213,
+              "end_time": 23152,
+              "speaker": {
+                "id": "speaker_1"
+              },
+              "words": [
+                {
+                  "text": "I ",
+                  "start_time": 14320,
+                  "end_time": 14480
+                },
+                {
+                  "text": "will ",
+                  "start_time": 14480,
+                  "end_time": 14640
+                },
+                {
+                  "text": "send ",
+                  "start_time": 14640,
+                  "end_time": 14960
+                },
+                {
+                  "text": "the ",
+                  "start_time": 14960,
+                  "end_time": 15040
+                },
+                {
+                  "text": "budget ",
+                  "start_time": 15040,
+                  "end_time": 15440
+                },
+                {
+                  "text": "on ",
+                  "start_time": 15440,
+                  "end_time": 15600
+                },
+                {
+                  "text": "Friday ",
+                  "start_time": 15600,
+                  "end_time": 16000
+                },
+                {
+                  "text": "before ",
+                  "start_time": 16000,
+                  "end_time": 16320
+                },
+                {
+                  "text": "3 ",
+                  "start_time": 16320,
+                  "end_time": 16640
+                },
+                {
+                  "text": "PM. ",
+                  "start_time": 16640,
+                  "end_time": 17040
+                },
+                {
+                  "text": "The ",
+                  "start_time": 17040,
+                  "end_time": 17120
+                },
+                {
+                  "text": "total ",
+                  "start_time": 17120,
+                  "end_time": 17520
+                },
+                {
+                  "text": "is ",
+                  "start_time": 17520,
+                  "end_time": 17680
+                },
+                {
+                  "text": "3600 ",
+                  "start_time": 17680,
+                  "end_time": 18400
+                },
+                {
+                  "text": "yuan. ",
+                  "start_time": 19040,
+                  "end_time": 19440
+                },
+                {
+                  "text": "Please ",
+                  "start_time": 19760,
+                  "end_time": 20000
+                },
+                {
+                  "text": "keep ",
+                  "start_time": 20000,
+                  "end_time": 20240
+                },
+                {
+                  "text": "the ",
+                  "start_time": 20240,
+                  "end_time": 20480
+                },
+                {
+                  "text": "original ",
+                  "start_time": 20480,
+                  "end_time": 20960
+                },
+                {
+                  "text": "recordings ",
+                  "start_time": 20960,
+                  "end_time": 21520
+                },
+                {
+                  "text": "and ",
+                  "start_time": 21520,
+                  "end_time": 21680
+                },
+                {
+                  "text": "check ",
+                  "start_time": 21680,
+                  "end_time": 22000
+                },
+                {
+                  "text": "the ",
+                  "start_time": 22000,
+                  "end_time": 22160
+                },
+                {
+                  "text": "upload ",
+                  "start_time": 22160,
+                  "end_time": 22560
+                },
+                {
+                  "text": "receipt. ",
+                  "start_time": 22560,
+                  "end_time": 23120
+                }
+              ]
+            },
+            {
+              "text": "好的，新的录音按照10分钟分片，请测试两位说话人能否区分，数字和日期是否正确，并确认结束和重开后仍能播放。",
+              "start_time": 23832,
+              "end_time": 36052,
+              "speaker": {
+                "id": "speaker_0"
+              },
+              "words": [
+                {
+                  "text": "好",
+                  "start_time": 23920,
+                  "end_time": 24160
+                },
+                {
+                  "text": "的，",
+                  "start_time": 24160,
+                  "end_time": 24320
+                },
+                {
+                  "text": "新",
+                  "start_time": 24560,
+                  "end_time": 24800
+                },
+                {
+                  "text": "的",
+                  "start_time": 24800,
+                  "end_time": 24880
+                },
+                {
+                  "text": "录",
+                  "start_time": 24880,
+                  "end_time": 25120
+                },
+                {
+                  "text": "音",
+                  "start_time": 25120,
+                  "end_time": 25280
+                },
+                {
+                  "text": "按",
+                  "start_time": 25360,
+                  "end_time": 25520
+                },
+                {
+                  "text": "照",
+                  "start_time": 25520,
+                  "end_time": 25680
+                },
+                {
+                  "text": "10",
+                  "start_time": 25680,
+                  "end_time": 26000
+                },
+                {
+                  "text": "分",
+                  "start_time": 26000,
+                  "end_time": 26160
+                },
+                {
+                  "text": "钟",
+                  "start_time": 26160,
+                  "end_time": 26400
+                },
+                {
+                  "text": "分",
+                  "start_time": 26400,
+                  "end_time": 26640
+                },
+                {
+                  "text": "片，",
+                  "start_time": 26640,
+                  "end_time": 27040
+                },
+                {
+                  "text": "请",
+                  "start_time": 27200,
+                  "end_time": 27520
+                },
+                {
+                  "text": "测",
+                  "start_time": 27520,
+                  "end_time": 27680
+                },
+                {
+                  "text": "试",
+                  "start_time": 27680,
+                  "end_time": 27920
+                },
+                {
+                  "text": "两",
+                  "start_time": 27920,
+                  "end_time": 28160
+                },
+                {
+                  "text": "位",
+                  "start_time": 28160,
+                  "end_time": 28320
+                },
+                {
+                  "text": "说",
+                  "start_time": 28320,
+                  "end_time": 28560
+                },
+                {
+                  "text": "话",
+                  "start_time": 28560,
+                  "end_time": 28880
+                },
+                {
+                  "text": "人",
+                  "start_time": 28880,
+                  "end_time": 29040
+                },
+                {
+                  "text": "能",
+                  "start_time": 29040,
+                  "end_time": 29280
+                },
+                {
+                  "text": "否",
+                  "start_time": 29280,
+                  "end_time": 29520
+                },
+                {
+                  "text": "区",
+                  "start_time": 29520,
+                  "end_time": 29760
+                },
+                {
+                  "text": "分，",
+                  "start_time": 29760,
+                  "end_time": 30080
+                },
+                {
+                  "text": "数",
+                  "start_time": 30400,
+                  "end_time": 30560
+                },
+                {
+                  "text": "字",
+                  "start_time": 30560,
+                  "end_time": 30800
+                },
+                {
+                  "text": "和",
+                  "start_time": 30800,
+                  "end_time": 31040
+                },
+                {
+                  "text": "日",
+                  "start_time": 31040,
+                  "end_time": 31200
+                },
+                {
+                  "text": "期",
+                  "start_time": 31200,
+                  "end_time": 31520
+                },
+                {
+                  "text": "是",
+                  "start_time": 31520,
+                  "end_time": 31680
+                },
+                {
+                  "text": "否",
+                  "start_time": 31680,
+                  "end_time": 31920
+                },
+                {
+                  "text": "正",
+                  "start_time": 31920,
+                  "end_time": 32160
+                },
+                {
+                  "text": "确，",
+                  "start_time": 32160,
+                  "end_time": 32560
+                },
+                {
+                  "text": "并",
+                  "start_time": 32880,
+                  "end_time": 33040
+                },
+                {
+                  "text": "确",
+                  "start_time": 33040,
+                  "end_time": 33360
+                },
+                {
+                  "text": "认",
+                  "start_time": 33360,
+                  "end_time": 33520
+                },
+                {
+                  "text": "结",
+                  "start_time": 33520,
+                  "end_time": 33760
+                },
+                {
+                  "text": "束",
+                  "start_time": 33760,
+                  "end_time": 34000
+                },
+                {
+                  "text": "和",
+                  "start_time": 34000,
+                  "end_time": 34160
+                },
+                {
+                  "text": "重",
+                  "start_time": 34160,
+                  "end_time": 34400
+                },
+                {
+                  "text": "开",
+                  "start_time": 34400,
+                  "end_time": 34720
+                },
+                {
+                  "text": "后",
+                  "start_time": 34720,
+                  "end_time": 34960
+                },
+                {
+                  "text": "仍",
+                  "start_time": 34960,
+                  "end_time": 35200
+                },
+                {
+                  "text": "能",
+                  "start_time": 35200,
+                  "end_time": 35440
+                },
+                {
+                  "text": "播",
+                  "start_time": 35440,
+                  "end_time": 35600
+                },
+                {
+                  "text": "放。",
+                  "start_time": 35600,
+                  "end_time": 35920
+                }
+              ]
+            },
+            {
+              "text": "Agreed. I will test the smaller audio file and compare the transcript with the original. The recording must continue while the screen is locked.",
+              "start_time": 36612,
+              "end_time": 45272,
+              "speaker": {
+                "id": "speaker_1"
+              },
+              "words": [
+                {
+                  "text": "Agreed. ",
+                  "start_time": 36720,
+                  "end_time": 37280
+                },
+                {
+                  "text": "I ",
+                  "start_time": 37520,
+                  "end_time": 37680
+                },
+                {
+                  "text": "will ",
+                  "start_time": 37680,
+                  "end_time": 37840
+                },
+                {
+                  "text": "test ",
+                  "start_time": 37840,
+                  "end_time": 38160
+                },
+                {
+                  "text": "the ",
+                  "start_time": 38160,
+                  "end_time": 38240
+                },
+                {
+                  "text": "smaller ",
+                  "start_time": 38240,
+                  "end_time": 38720
+                },
+                {
+                  "text": "audio ",
+                  "start_time": 38720,
+                  "end_time": 39120
+                },
+                {
+                  "text": "file ",
+                  "start_time": 39120,
+                  "end_time": 39440
+                },
+                {
+                  "text": "and ",
+                  "start_time": 39440,
+                  "end_time": 39600
+                },
+                {
+                  "text": "compare ",
+                  "start_time": 39600,
+                  "end_time": 40000
+                },
+                {
+                  "text": "the ",
+                  "start_time": 40080,
+                  "end_time": 40160
+                },
+                {
+                  "text": "transcript ",
+                  "start_time": 40160,
+                  "end_time": 40800
+                },
+                {
+                  "text": "with ",
+                  "start_time": 40800,
+                  "end_time": 40960
+                },
+                {
+                  "text": "the ",
+                  "start_time": 40960,
+                  "end_time": 41120
+                },
+                {
+                  "text": "original. ",
+                  "start_time": 41120,
+                  "end_time": 41760
+                },
+                {
+                  "text": "The ",
+                  "start_time": 41920,
+                  "end_time": 42000
+                },
+                {
+                  "text": "recording ",
+                  "start_time": 42000,
+                  "end_time": 42560
+                },
+                {
+                  "text": "must ",
+                  "start_time": 42560,
+                  "end_time": 42800
+                },
+                {
+                  "text": "continue ",
+                  "start_time": 42800,
+                  "end_time": 43280
+                },
+                {
+                  "text": "while ",
+                  "start_time": 43280,
+                  "end_time": 43520
+                },
+                {
+                  "text": "the ",
+                  "start_time": 43520,
+                  "end_time": 43600
+                },
+                {
+                  "text": "screen ",
+                  "start_time": 43600,
+                  "end_time": 44000
+                },
+                {
+                  "text": "is ",
+                  "start_time": 44000,
+                  "end_time": 44160
+                },
+                {
+                  "text": "locked.",
+                  "start_time": 44160,
+                  "end_time": 44640
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "format": "android-aac32",
+      "bytes": 189392,
+      "result": [
+        {
+          "text": "我们今天讨论录音文件，请你星期五下午 3 点前提交预算方案，金额 3600 元。我负责检查手机录音和历史数据，旧文件不要删除。I will send the budget on Friday before 3 PM. The total is 3600 yuan. Please keep the original recordings and check the upload receipt. 好的，新的录音按照 10 分钟分片，请测试两位说话人能否区分，数字和日期是否正确，并确认结束和重开后仍能播放。Agreed. I will test the smaller audio file and compare the transcript with the original. The recording must continue while the screen is locked.",
+          "utterances": [
+            {
+              "text": "我们今天讨论录音文件，请你星期五下午 3 点前提交预算方案，金额 3600 元。我负责检查手机录音和历史数据，旧文件不要删除。",
+              "start_time": 13,
+              "end_time": 13793,
+              "speaker": {
+                "id": "speaker_0"
+              },
+              "words": [
+                {
+                  "text": "我",
+                  "start_time": 160,
+                  "end_time": 240
+                },
+                {
+                  "text": "们",
+                  "start_time": 240,
+                  "end_time": 320
+                },
+                {
+                  "text": "今",
+                  "start_time": 320,
+                  "end_time": 560
+                },
+                {
+                  "text": "天",
+                  "start_time": 560,
+                  "end_time": 800
+                },
+                {
+                  "text": "讨",
+                  "start_time": 800,
+                  "end_time": 1120
+                },
+                {
+                  "text": "论",
+                  "start_time": 1120,
+                  "end_time": 1360
+                },
+                {
+                  "text": "录",
+                  "start_time": 1360,
+                  "end_time": 1520
+                },
+                {
+                  "text": "音",
+                  "start_time": 1520,
+                  "end_time": 1680
+                },
+                {
+                  "text": "文",
+                  "start_time": 1680,
+                  "end_time": 1920
+                },
+                {
+                  "text": "件，",
+                  "start_time": 1920,
+                  "end_time": 2240
+                },
+                {
+                  "text": "请",
+                  "start_time": 2400,
+                  "end_time": 2720
+                },
+                {
+                  "text": "你",
+                  "start_time": 2720,
+                  "end_time": 2880
+                },
+                {
+                  "text": "星",
+                  "start_time": 2880,
+                  "end_time": 3120
+                },
+                {
+                  "text": "期",
+                  "start_time": 3120,
+                  "end_time": 3360
+                },
+                {
+                  "text": "五",
+                  "start_time": 3360,
+                  "end_time": 3520
+                },
+                {
+                  "text": "下",
+                  "start_time": 3520,
+                  "end_time": 3840
+                },
+                {
+                  "text": "午 ",
+                  "start_time": 3840,
+                  "end_time": 4000
+                },
+                {
+                  "text": "3 ",
+                  "start_time": 4000,
+                  "end_time": 4240
+                },
+                {
+                  "text": "点",
+                  "start_time": 4240,
+                  "end_time": 4480
+                },
+                {
+                  "text": "前",
+                  "start_time": 4480,
+                  "end_time": 4800
+                },
+                {
+                  "text": "提",
+                  "start_time": 4800,
+                  "end_time": 4960
+                },
+                {
+                  "text": "交",
+                  "start_time": 4960,
+                  "end_time": 5280
+                },
+                {
+                  "text": "预",
+                  "start_time": 5280,
+                  "end_time": 5440
+                },
+                {
+                  "text": "算",
+                  "start_time": 5440,
+                  "end_time": 5760
+                },
+                {
+                  "text": "方",
+                  "start_time": 5760,
+                  "end_time": 6000
+                },
+                {
+                  "text": "案，",
+                  "start_time": 6000,
+                  "end_time": 6320
+                },
+                {
+                  "text": "金",
+                  "start_time": 6560,
+                  "end_time": 6800
+                },
+                {
+                  "text": "额 ",
+                  "start_time": 6800,
+                  "end_time": 7040
+                },
+                {
+                  "text": "3600 ",
+                  "start_time": 7040,
+                  "end_time": 7600
+                },
+                {
+                  "text": "元。",
+                  "start_time": 8000,
+                  "end_time": 8400
+                },
+                {
+                  "text": "我",
+                  "start_time": 8720,
+                  "end_time": 8720
+                },
+                {
+                  "text": "负",
+                  "start_time": 8720,
+                  "end_time": 8960
+                },
+                {
+                  "text": "责",
+                  "start_time": 8960,
+                  "end_time": 9200
+                },
+                {
+                  "text": "检",
+                  "start_time": 9200,
+                  "end_time": 9440
+                },
+                {
+                  "text": "查",
+                  "start_time": 9440,
+                  "end_time": 9680
+                },
+                {
+                  "text": "手",
+                  "start_time": 9680,
+                  "end_time": 10000
+                },
+                {
+                  "text": "机",
+                  "start_time": 10000,
+                  "end_time": 10240
+                },
+                {
+                  "text": "录",
+                  "start_time": 10240,
+                  "end_time": 10400
+                },
+                {
+                  "text": "音",
+                  "start_time": 10400,
+                  "end_time": 10560
+                },
+                {
+                  "text": "和",
+                  "start_time": 10560,
+                  "end_time": 10800
+                },
+                {
+                  "text": "历",
+                  "start_time": 10800,
+                  "end_time": 10960
+                },
+                {
+                  "text": "史",
+                  "start_time": 10960,
+                  "end_time": 11200
+                },
+                {
+                  "text": "数",
+                  "start_time": 11200,
+                  "end_time": 11440
+                },
+                {
+                  "text": "据，",
+                  "start_time": 11440,
+                  "end_time": 11760
+                },
+                {
+                  "text": "旧",
+                  "start_time": 12000,
+                  "end_time": 12160
+                },
+                {
+                  "text": "文",
+                  "start_time": 12160,
+                  "end_time": 12400
+                },
+                {
+                  "text": "件",
+                  "start_time": 12400,
+                  "end_time": 12640
+                },
+                {
+                  "text": "不",
+                  "start_time": 12640,
+                  "end_time": 12800
+                },
+                {
+                  "text": "要",
+                  "start_time": 12880,
+                  "end_time": 13040
+                },
+                {
+                  "text": "删",
+                  "start_time": 13040,
+                  "end_time": 13280
+                },
+                {
+                  "text": "除。",
+                  "start_time": 13280,
+                  "end_time": 13680
+                }
+              ]
+            },
+            {
+              "text": "I will send the budget on Friday before 3 PM. The total is 3600 yuan. Please keep the original recordings and check the upload receipt. ",
+              "start_time": 14312,
+              "end_time": 23312,
+              "speaker": {
+                "id": "speaker_1"
+              },
+              "words": [
+                {
+                  "text": "I ",
+                  "start_time": 14480,
+                  "end_time": 14640
+                },
+                {
+                  "text": "will ",
+                  "start_time": 14640,
+                  "end_time": 14800
+                },
+                {
+                  "text": "send ",
+                  "start_time": 14800,
+                  "end_time": 15120
+                },
+                {
+                  "text": "the ",
+                  "start_time": 15120,
+                  "end_time": 15200
+                },
+                {
+                  "text": "budget ",
+                  "start_time": 15200,
+                  "end_time": 15520
+                },
+                {
+                  "text": "on ",
+                  "start_time": 15520,
+                  "end_time": 15680
+                },
+                {
+                  "text": "Friday ",
+                  "start_time": 15680,
+                  "end_time": 16160
+                },
+                {
+                  "text": "before ",
+                  "start_time": 16160,
+                  "end_time": 16480
+                },
+                {
+                  "text": "3 ",
+                  "start_time": 16480,
+                  "end_time": 16800
+                },
+                {
+                  "text": "PM. ",
+                  "start_time": 16800,
+                  "end_time": 17200
+                },
+                {
+                  "text": "The ",
+                  "start_time": 17200,
+                  "end_time": 17280
+                },
+                {
+                  "text": "total ",
+                  "start_time": 17280,
+                  "end_time": 17680
+                },
+                {
+                  "text": "is ",
+                  "start_time": 17680,
+                  "end_time": 17840
+                },
+                {
+                  "text": "3600 ",
+                  "start_time": 17840,
+                  "end_time": 18480
+                },
+                {
+                  "text": "yuan. ",
+                  "start_time": 19120,
+                  "end_time": 19600
+                },
+                {
+                  "text": "Please ",
+                  "start_time": 19840,
+                  "end_time": 20160
+                },
+                {
+                  "text": "keep ",
+                  "start_time": 20160,
+                  "end_time": 20400
+                },
+                {
+                  "text": "the ",
+                  "start_time": 20400,
+                  "end_time": 20640
+                },
+                {
+                  "text": "original ",
+                  "start_time": 20640,
+                  "end_time": 21040
+                },
+                {
+                  "text": "recordings ",
+                  "start_time": 21040,
+                  "end_time": 21680
+                },
+                {
+                  "text": "and ",
+                  "start_time": 21680,
+                  "end_time": 21760
+                },
+                {
+                  "text": "check ",
+                  "start_time": 21760,
+                  "end_time": 22080
+                },
+                {
+                  "text": "the ",
+                  "start_time": 22080,
+                  "end_time": 22240
+                },
+                {
+                  "text": "upload ",
+                  "start_time": 22240,
+                  "end_time": 22640
+                },
+                {
+                  "text": "receipt. ",
+                  "start_time": 22640,
+                  "end_time": 23200
+                }
+              ]
+            },
+            {
+              "text": "好的，新的录音按照 10 分钟分片，请测试两位说话人能否区分，数字和日期是否正确，并确认结束和重开后仍能播放。",
+              "start_time": 23953,
+              "end_time": 36192,
+              "speaker": {
+                "id": "speaker_0"
+              },
+              "words": [
+                {
+                  "text": "好",
+                  "start_time": 24080,
+                  "end_time": 24240
+                },
+                {
+                  "text": "的，",
+                  "start_time": 24240,
+                  "end_time": 24480
+                },
+                {
+                  "text": "新",
+                  "start_time": 24640,
+                  "end_time": 24880
+                },
+                {
+                  "text": "的",
+                  "start_time": 24880,
+                  "end_time": 25040
+                },
+                {
+                  "text": "录",
+                  "start_time": 25040,
+                  "end_time": 25200
+                },
+                {
+                  "text": "音",
+                  "start_time": 25200,
+                  "end_time": 25440
+                },
+                {
+                  "text": "按",
+                  "start_time": 25520,
+                  "end_time": 25600
+                },
+                {
+                  "text": "照 ",
+                  "start_time": 25600,
+                  "end_time": 25840
+                },
+                {
+                  "text": "10 ",
+                  "start_time": 25840,
+                  "end_time": 26080
+                },
+                {
+                  "text": "分",
+                  "start_time": 26080,
+                  "end_time": 26320
+                },
+                {
+                  "text": "钟",
+                  "start_time": 26320,
+                  "end_time": 26560
+                },
+                {
+                  "text": "分",
+                  "start_time": 26560,
+                  "end_time": 26800
+                },
+                {
+                  "text": "片，",
+                  "start_time": 26800,
+                  "end_time": 27120
+                },
+                {
+                  "text": "请",
+                  "start_time": 27360,
+                  "end_time": 27600
+                },
+                {
+                  "text": "测",
+                  "start_time": 27600,
+                  "end_time": 27840
+                },
+                {
+                  "text": "试",
+                  "start_time": 27840,
+                  "end_time": 28080
+                },
+                {
+                  "text": "两",
+                  "start_time": 28080,
+                  "end_time": 28240
+                },
+                {
+                  "text": "位",
+                  "start_time": 28240,
+                  "end_time": 28480
+                },
+                {
+                  "text": "说",
+                  "start_time": 28480,
+                  "end_time": 28720
+                },
+                {
+                  "text": "话",
+                  "start_time": 28720,
+                  "end_time": 28960
+                },
+                {
+                  "text": "人",
+                  "start_time": 28960,
+                  "end_time": 29200
+                },
+                {
+                  "text": "能",
+                  "start_time": 29200,
+                  "end_time": 29360
+                },
+                {
+                  "text": "否",
+                  "start_time": 29360,
+                  "end_time": 29600
+                },
+                {
+                  "text": "区",
+                  "start_time": 29600,
+                  "end_time": 29840
+                },
+                {
+                  "text": "分，",
+                  "start_time": 29840,
+                  "end_time": 30240
+                },
+                {
+                  "text": "数",
+                  "start_time": 30480,
+                  "end_time": 30720
+                },
+                {
+                  "text": "字",
+                  "start_time": 30720,
+                  "end_time": 30960
+                },
+                {
+                  "text": "和",
+                  "start_time": 30960,
+                  "end_time": 31200
+                },
+                {
+                  "text": "日",
+                  "start_time": 31200,
+                  "end_time": 31360
+                },
+                {
+                  "text": "期",
+                  "start_time": 31360,
+                  "end_time": 31600
+                },
+                {
+                  "text": "是",
+                  "start_time": 31600,
+                  "end_time": 31840
+                },
+                {
+                  "text": "否",
+                  "start_time": 31840,
+                  "end_time": 32080
+                },
+                {
+                  "text": "正",
+                  "start_time": 32080,
+                  "end_time": 32320
+                },
+                {
+                  "text": "确，",
+                  "start_time": 32320,
+                  "end_time": 32720
+                },
+                {
+                  "text": "并",
+                  "start_time": 33040,
+                  "end_time": 33200
+                },
+                {
+                  "text": "确",
+                  "start_time": 33200,
+                  "end_time": 33520
+                },
+                {
+                  "text": "认",
+                  "start_time": 33520,
+                  "end_time": 33680
+                },
+                {
+                  "text": "结",
+                  "start_time": 33680,
+                  "end_time": 33920
+                },
+                {
+                  "text": "束",
+                  "start_time": 33920,
+                  "end_time": 34080
+                },
+                {
+                  "text": "和",
+                  "start_time": 34080,
+                  "end_time": 34320
+                },
+                {
+                  "text": "重",
+                  "start_time": 34320,
+                  "end_time": 34560
+                },
+                {
+                  "text": "开",
+                  "start_time": 34560,
+                  "end_time": 34800
+                },
+                {
+                  "text": "后",
+                  "start_time": 34800,
+                  "end_time": 35120
+                },
+                {
+                  "text": "仍",
+                  "start_time": 35120,
+                  "end_time": 35360
+                },
+                {
+                  "text": "能",
+                  "start_time": 35360,
+                  "end_time": 35520
+                },
+                {
+                  "text": "播",
+                  "start_time": 35520,
+                  "end_time": 35600
+                },
+                {
+                  "text": "放。",
+                  "start_time": 35600,
+                  "end_time": 36000
+                }
+              ]
+            },
+            {
+              "text": "Agreed. I will test the smaller audio file and compare the transcript with the original. The recording must continue while the screen is locked.",
+              "start_time": 36713,
+              "end_time": 45953,
+              "speaker": {
+                "id": "speaker_1"
+              },
+              "words": [
+                {
+                  "text": "Agreed. ",
+                  "start_time": 36880,
+                  "end_time": 37440
+                },
+                {
+                  "text": "I ",
+                  "start_time": 37680,
+                  "end_time": 37840
+                },
+                {
+                  "text": "will ",
+                  "start_time": 37840,
+                  "end_time": 38000
+                },
+                {
+                  "text": "test ",
+                  "start_time": 38000,
+                  "end_time": 38320
+                },
+                {
+                  "text": "the ",
+                  "start_time": 38320,
+                  "end_time": 38400
+                },
+                {
+                  "text": "smaller ",
+                  "start_time": 38400,
+                  "end_time": 38800
+                },
+                {
+                  "text": "audio ",
+                  "start_time": 38800,
+                  "end_time": 39200
+                },
+                {
+                  "text": "file ",
+                  "start_time": 39200,
+                  "end_time": 39600
+                },
+                {
+                  "text": "and ",
+                  "start_time": 39600,
+                  "end_time": 39760
+                },
+                {
+                  "text": "compare ",
+                  "start_time": 39760,
+                  "end_time": 40160
+                },
+                {
+                  "text": "the ",
+                  "start_time": 40160,
+                  "end_time": 40240
+                },
+                {
+                  "text": "transcript ",
+                  "start_time": 40240,
+                  "end_time": 40960
+                },
+                {
+                  "text": "with ",
+                  "start_time": 40960,
+                  "end_time": 41120
+                },
+                {
+                  "text": "the ",
+                  "start_time": 41120,
+                  "end_time": 41280
+                },
+                {
+                  "text": "original. ",
+                  "start_time": 41280,
+                  "end_time": 41840
+                },
+                {
+                  "text": "The ",
+                  "start_time": 42080,
+                  "end_time": 42160
+                },
+                {
+                  "text": "recording ",
+                  "start_time": 42160,
+                  "end_time": 42640
+                },
+                {
+                  "text": "must ",
+                  "start_time": 42640,
+                  "end_time": 42960
+                },
+                {
+                  "text": "continue ",
+                  "start_time": 42960,
+                  "end_time": 43440
+                },
+                {
+                  "text": "while ",
+                  "start_time": 43440,
+                  "end_time": 43600
+                },
+                {
+                  "text": "the ",
+                  "start_time": 43600,
+                  "end_time": 43760
+                },
+                {
+                  "text": "screen ",
+                  "start_time": 43760,
+                  "end_time": 44080
+                },
+                {
+                  "text": "is ",
+                  "start_time": 44080,
+                  "end_time": 44240
+                },
+                {
+                  "text": "locked.",
+                  "start_time": 44240,
+                  "end_time": 44800
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
